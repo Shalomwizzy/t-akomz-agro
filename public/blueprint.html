@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>T-Akomz Agro Estates — Platform Blueprint v2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--g:#B8F397;--dg:#6FAE4B;--bg:#050505;--s:#111111;--el:#1A1A1A;--br:#2A2A2A;--t:#F5F5F5;--ts:#CFCFCF;--tm:#666666;--warn:#F5A623;--err:#E53935;--info:#29B6F6}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);font-size:15px;line-height:1.7;display:flex;min-height:100vh}
+  .toc{width:260px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--s);border-right:1px solid var(--br);padding:28px 0}
+  .toc-brand{padding:0 20px 20px;border-bottom:1px solid var(--br);margin-bottom:14px}
+  .toc-brand h2{font-family:'Playfair Display',serif;font-size:16px;color:var(--g);font-weight:700}
+  .toc-brand p{font-size:11px;color:var(--tm);margin-top:2px}
+  .toc nav{padding:0 12px}
+  .toc a{display:block;padding:6px 10px;font-size:12.5px;color:var(--ts);text-decoration:none;border-radius:8px;transition:all 0.15s;line-height:1.4}
+  .toc a:hover{background:rgba(184,243,151,0.08);color:var(--g)}
+  .toc-sec{font-size:10px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:.08em;padding:12px 10px 4px}
+  .toc-btn{margin:16px 12px 0;background:var(--g);color:#050505;border:none;padding:10px 16px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;width:calc(100% - 24px)}
+  .toc-btn:hover{background:var(--dg)}
+  .main{flex:1;max-width:960px;padding:48px 56px 80px;overflow-x:hidden}
+  .cover{text-align:center;padding:60px 0 80px;border-bottom:1px solid var(--br);margin-bottom:64px}
+  .cover-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(184,243,151,0.1);border:1px solid rgba(184,243,151,0.2);border-radius:100px;padding:6px 16px;font-size:12px;font-weight:600;color:var(--g);letter-spacing:.05em;text-transform:uppercase;margin-bottom:24px}
+  .cover h1{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;line-height:1.1;margin-bottom:8px}
+  .cover h1 span{color:var(--g)}
+  .cover-sub{font-size:20px;color:var(--ts);margin-bottom:4px}
+  .cover-date{font-size:14px;color:var(--tm);margin-bottom:40px}
+  .cover-stats{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+  .cover-stat{background:var(--s);border:1px solid var(--br);border-radius:12px;padding:20px 28px;min-width:110px;text-align:center}
+  .cover-stat .num{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--g);display:block}
+  .cover-stat .lbl{font-size:11px;color:var(--tm);margin-top:2px}
+  section{margin-bottom:64px;scroll-margin-top:24px}
+  .sec-lbl{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g);margin-bottom:12px}
+  .sec-lbl::before{content:'';display:inline-block;width:20px;height:2px;background:var(--g);border-radius:2px}
+  h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;margin-bottom:24px;line-height:1.2}
+  h3{font-size:17px;font-weight:600;color:var(--t);margin-bottom:12px;margin-top:28px}
+  p{color:var(--ts);margin-bottom:14px}
+  .card{background:var(--s);border:1px solid var(--br);border-radius:12px;padding:24px;margin-bottom:16px}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:24px}
+  .card h4{font-size:14px;font-weight:600;color:var(--g);margin-bottom:8px}
+  .card p{font-size:13px;color:var(--ts);margin:0;line-height:1.6}
+  .tw{overflow-x:auto;margin-bottom:24px;border-radius:12px;border:1px solid var(--br)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  thead{background:var(--el)}
+  th{padding:12px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--tm);border-bottom:1px solid var(--br)}
+  td{padding:12px 16px;color:var(--ts);border-bottom:1px solid rgba(42,42,42,0.5);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:rgba(255,255,255,0.02)}
+  td:first-child{font-weight:500;color:var(--t)}
+  .badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:11.5px;font-weight:600;white-space:nowrap}
+  .bg{background:rgba(184,243,151,0.12);color:var(--g);border:1px solid rgba(184,243,151,0.2)}
+  .bb{background:rgba(41,182,246,0.12);color:var(--info);border:1px solid rgba(41,182,246,0.2)}
+  .bo{background:rgba(245,166,35,0.12);color:var(--warn);border:1px solid rgba(245,166,35,0.2)}
+  .bm{background:rgba(255,255,255,0.06);color:var(--tm);border:1px solid var(--br)}
+  code{font-family:'JetBrains Mono',monospace;font-size:12.5px;background:var(--el);border:1px solid var(--br);border-radius:6px;padding:2px 7px;color:var(--g)}
+  pre{background:var(--s);border:1px solid var(--br);border-radius:12px;padding:20px 24px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7;color:var(--ts);margin-bottom:20px;white-space:pre}
+  details{border:1px solid var(--br);border-radius:12px;margin-bottom:12px;overflow:hidden}
+  summary{padding:16px 20px;cursor:pointer;font-weight:600;color:var(--t);background:var(--s);display:flex;align-items:center;justify-content:space-between;list-style:none;font-size:14.5px;user-select:none}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:'↓';font-size:12px;color:var(--tm)}
+  details[open] summary{border-bottom:1px solid var(--br)}
+  details[open] summary::after{transform:rotate(180deg)}
+  details>div{padding:20px;background:#0D0D0D}
+  .flow{display:flex;flex-direction:column;gap:0;margin:16px 0}
+  .flow-step{display:flex;gap:16px;align-items:flex-start;padding-bottom:16px;position:relative}
+  .flow-step:not(:last-child)::before{content:'';position:absolute;left:15px;top:32px;bottom:0;width:2px;background:var(--br)}
+  .flow-num{width:32px;height:32px;border-radius:50%;background:rgba(184,243,151,0.15);border:1px solid rgba(184,243,151,0.3);color:var(--g);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+  .flow-content{padding-top:5px}
+  .flow-content strong{font-size:14px;color:var(--t);display:block}
+  .flow-content span{font-size:13px;color:var(--tm)}
+  .env-group{margin-bottom:24px}
+  .env-group h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tm);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--br)}
+  .env-row{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid rgba(42,42,42,0.4);font-size:13px;flex-wrap:wrap;align-items:flex-start}
+  .env-row:last-child{border-bottom:none}
+  .env-k{font-family:'JetBrains Mono',monospace;color:var(--g);flex-shrink:0;min-width:240px}
+  .env-d{color:var(--tm)}
+  hr{border:none;border-top:1px solid var(--br);margin:48px 0}
+  ul.check{list-style:none;display:flex;flex-direction:column;gap:7px}
+  ul.check li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--ts)}
+  ul.check li::before{content:'✓';width:20px;height:20px;border-radius:50%;background:rgba(184,243,151,0.15);color:var(--g);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+  ul.pend li::before{content:'○';background:var(--el);color:var(--tm)}
+  @media print{
+    body{background:#fff;color:#111;display:block}
+    .toc{display:none}
+    .main{max-width:100%;padding:20px}
+    .cover h1{color:#111}
+    .cover h1 span,.card h4,.badge.bg,.env-k{color:#2d6a1a}
+    .card,.tw,.card-grid .card{background:#f5f5f5;border-color:#ddd}
+    code,pre{background:#f0f0f0;color:#2d6a1a;border-color:#ddd}
+    h2,h3{color:#111}
+    p,td,li{color:#333}
+    th{color:#666;background:#e8e8e8}
+    details[open]>div{background:#fafafa}
+    summary{background:#f0f0f0;color:#111}
+    .toc-btn{display:none}
+    section{page-break-inside:avoid}
+  }
+  @media(max-width:768px){body{display:block}.toc{display:none}.main{padding:24px 20px 60px}.cover h1{font-size:32px}.cover-stats{gap:12px}.cover-stat{min-width:100px;padding:14px 18px}}
+</style>
+</head>
+<body>
+<aside class="toc">
+  <div class="toc-brand"><h2>T-Akomz Agro</h2><p>Platform Blueprint v2.0</p></div>
+  <nav>
+    <div class="toc-sec">Overview</div>
+    <a href="#cover">Cover &amp; Summary</a>
+    <a href="#tech">Tech Stack</a>
+    <a href="#roles">Roles &amp; Access</a>
+    <a href="#database">Database Tables</a>
+    <div class="toc-sec">Payments &amp; Comms</div>
+    <a href="#payments">Payment Flows</a>
+    <a href="#emails">All 14 Emails</a>
+    <a href="#push">Push Notifications</a>
+    <a href="#sms">SMS (Termii)</a>
+    <div class="toc-sec">Intelligence</div>
+    <a href="#ai">AI Features</a>
+    <a href="#pwa">PWA</a>
+    <div class="toc-sec">Reference</div>
+    <a href="#routes">Key Routes</a>
+    <a href="#commands">CLI Commands</a>
+    <a href="#env">Environment Variables</a>
+    <a href="#phases">Build Phases</a>
+    <a href="#biz">Business Info</a>
+  </nav>
+  <button class="toc-btn" onclick="window.print()">⬇ Download / Print</button>
+</aside>
+<main class="main">
+
+<!-- COVER -->
+<section id="cover" class="cover">
+  <div class="cover-badge">● Full-Stack Platform Blueprint</div>
+  <h1>T-Akomz <span>Agro</span> Estates</h1>
+  <p class="cover-sub">Agricultural E-Commerce &amp; Corporate Platform</p>
+  <p class="cover-date">Blueprint v2.0 — May 2026 — Confidential</p>
+  <div class="cover-stats">
+    <div class="cover-stat"><span class="num">14</span><span class="lbl">Email Templates</span></div>
+    <div class="cover-stat"><span class="num">2</span><span class="lbl">Payment Gateways</span></div>
+    <div class="cover-stat"><span class="num">AI</span><span class="lbl">GROQ + Gemini</span></div>
+    <div class="cover-stat"><span class="num">PWA</span><span class="lbl">Installable App</span></div>
+    <div class="cover-stat"><span class="num">Push</span><span class="lbl">OneSignal</span></div>
+    <div class="cover-stat"><span class="num">SMS</span><span class="lbl">Termii Nigeria</span></div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="tech">
+  <div class="sec-lbl">Section 1</div>
+  <h2>Technology Stack</h2>
+  <div class="card-grid">
+    <div class="card"><h4>Backend</h4><p>Laravel 13 · PHP 8.3+ · Eloquent ORM · Artisan CLI · Laravel Breeze (auth) · Spatie Permission (RBAC)</p></div>
+    <div class="card"><h4>Frontend</h4><p>Blade templating · Alpine.js (reactivity) · Tailwind CSS v3 · Vite + npm · Playfair Display + DM Sans + JetBrains Mono</p></div>
+    <div class="card"><h4>Database</h4><p>SQLite (development) → MySQL / PlanetScale (production) · 17 tables · Database queue driver</p></div>
+    <div class="card"><h4>Image &amp; PDF</h4><p>Intervention Image v4 (WebP conversion, watermark) · barryvdh/laravel-dompdf (PDF invoices) · maatwebsite/excel (exports)</p></div>
+    <div class="card"><h4>Payments</h4><p>Paystack (primary — Nigeria) · Flutterwave (secondary) · Cash on Delivery</p></div>
+    <div class="card"><h4>Communications</h4><p>Laravel Mail (SMTP/Mailgun) · Termii SMS gateway (Nigeria) · OneSignal web push notifications</p></div>
+    <div class="card"><h4>AI &amp; Content</h4><p>GROQ LLaMA 3.3-70B (primary AI) · Google Gemini 2.0 Flash (fallback) · Pexels API (free blog images)</p></div>
+    <div class="card"><h4>SEO &amp; Discovery</h4><p>spatie/laravel-sitemap · Custom SEO Blade component · Open Graph + Twitter card meta tags · Canonical URLs</p></div>
+  </div>
+</section>
+
+<!-- ROLES -->
+<section id="roles">
+  <div class="sec-lbl">Section 2</div>
+  <h2>Roles &amp; Access Control</h2>
+  <p>Powered by <strong>spatie/laravel-permission</strong>. Admin controllers check <code>hasRole(['ADMIN','SUPER_ADMIN'])</code>.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Role</th><th>Access Level</th><th>Key Capabilities</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge bg">SUPER_ADMIN</span></td><td>Full access</td><td>Everything including site settings, user management, push notifications, ERP modules</td></tr>
+      <tr><td><span class="badge bb">ADMIN</span></td><td>Full admin except settings</td><td>Orders, products, categories, blog, customers, inventory, promotions, analytics, AI assistant</td></tr>
+      <tr><td><span class="badge bo">MANAGER</span></td><td>Limited ERP</td><td>Finance dashboard, livestock batches, farm supplies, operations overview</td></tr>
+      <tr><td><span class="badge bm">SALES</span></td><td>Order management</td><td>View and update orders, view customers</td></tr>
+      <tr><td><span class="badge bm">CUSTOMER</span></td><td>Public + account</td><td>Shop, cart, checkout, account dashboard, orders, wishlist, reviews, saved addresses</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- DATABASE -->
+<section id="database">
+  <div class="sec-lbl">Section 3</div>
+  <h2>Database Tables (17)</h2>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Table</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><code>users</code></td><td>All users — customers, staff, admins. Email stored lowercase, password hashed.</td></tr>
+      <tr><td>2</td><td><code>model_has_roles</code></td><td>Spatie permissions pivot — assigns roles to users.</td></tr>
+      <tr><td>3</td><td><code>categories</code></td><td>Product categories — Poultry, Eggs, Livestock, Crop Produce, Dairy, Organic Inputs, Subscription Boxes.</td></tr>
+      <tr><td>4</td><td><code>products</code></td><td>Farm products — name, slug, description, price, compare_price, wholesale_price, unit, stock, low_stock_threshold, SKU, tags (JSON), nutrition_facts (JSON), is_active, is_featured, is_organic.</td></tr>
+      <tr><td>5</td><td><code>product_images</code></td><td>Multiple WebP images per product. Tracks is_primary, sort_order, alt_text.</td></tr>
+      <tr><td>6</td><td><code>orders</code></td><td>Customer orders. Format: TAK-YYYY-NNNNN. Stores customer info, delivery address, status, payment_status, payment_reference, subtotal, delivery_fee, discount, total, paid_at.</td></tr>
+      <tr><td>7</td><td><code>order_items</code></td><td>Line items per order — product snapshot (name, price, unit) + quantity.</td></tr>
+      <tr><td>8</td><td><code>order_timelines</code></td><td>Status history per order — status, note, created_at. Displayed on order detail tracking page.</td></tr>
+      <tr><td>9</td><td><code>cart_items</code></td><td>Server-side cart for logged-in users. Session cart merged on login.</td></tr>
+      <tr><td>10</td><td><code>addresses</code></td><td>Saved delivery addresses — label, recipient, phone, address, LGA, state, is_default.</td></tr>
+      <tr><td>11</td><td><code>reviews</code></td><td>Product reviews — rating (1–5), comment, is_approved (admin moderated).</td></tr>
+      <tr><td>12</td><td><code>wishlist_items</code></td><td>Customer wishlists — product_id per user. Count shown in navbar badge.</td></tr>
+      <tr><td>13</td><td><code>blog_posts</code></td><td>Blog articles — title, slug, body, featured_image, category, is_published, published_at, author_id.</td></tr>
+      <tr><td>14</td><td><code>coupons</code></td><td>Discount codes — code, type (fixed/percent), value, max_uses, used_count, expires_at, is_active.</td></tr>
+      <tr><td>15</td><td><code>newsletter_subscribers</code></td><td>Email list — email (lowercase), is_active, subscribed_at.</td></tr>
+      <tr><td>16</td><td><code>site_settings</code></td><td>Key-value store for all admin-configurable settings — contact info, banners, payment keys, watermark text.</td></tr>
+      <tr><td>17</td><td><code>push_notification_logs</code></td><td>History of all push notifications — title, message, url, segment, sent_by (admin), success (bool).</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- PAYMENTS -->
+<section id="payments">
+  <div class="sec-lbl">Section 4</div>
+  <h2>Payment Flows</h2>
+
+  <details open>
+    <summary>Paystack — Primary Gateway (Nigeria)</summary>
+    <div>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-num">1</div><div class="flow-content"><strong>Customer places order</strong><span>POST /checkout → creates Order (status: PENDING, payment_status: UNPAID, order_number: TAK-YYYY-NNNNN)</span></div></div>
+        <div class="flow-step"><div class="flow-num">2</div><div class="flow-content"><strong>Initialize Paystack</strong><span>Server calls Paystack API → gets authorization_url → redirects customer to Paystack hosted checkout</span></div></div>
+        <div class="flow-step"><div class="flow-num">3</div><div class="flow-content"><strong>Customer pays</strong><span>Card / bank transfer / USSD on Paystack's secure page</span></div></div>
+        <div class="flow-step"><div class="flow-num">4</div><div class="flow-content"><strong>Webhook received</strong><span>Paystack POSTs to /api/payment/paystack/webhook → HMAC-SHA512 signature verified</span></div></div>
+        <div class="flow-step"><div class="flow-num">5</div><div class="flow-content"><strong>Order confirmed</strong><span>Order updated: payment_status=PAID, status=CONFIRMED, paid_at=now(). Timeline entry recorded.</span></div></div>
+        <div class="flow-step"><div class="flow-num">6</div><div class="flow-content"><strong>All notifications dispatched</strong><span>Email (OrderConfirmed + PDF invoice) to customer · Email (OrderAdminAlert) to admin · SMS to customer · Push to all subscribers</span></div></div>
+        <div class="flow-step"><div class="flow-num">7</div><div class="flow-content"><strong>Success page</strong><span>Customer redirected to /checkout/success?order=TAK-xxxx with full order summary</span></div></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Flutterwave — Secondary Gateway</summary>
+    <div>
+      <p>Identical flow to Paystack. Key differences:</p>
+      <ul style="color:var(--ts);padding-left:20px;margin-top:8px;line-height:2.2">
+        <li>Init: POST https://api.flutterwave.com/v3/payments</li>
+        <li>Webhook: /api/payment/flutterwave/webhook — validated via secret hash header</li>
+        <li>Verify: GET /v3/transactions/{id}/verify</li>
+        <li>Callback: /checkout/flutterwave/callback</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Cash on Delivery</summary>
+    <div><p>Order created with payment_status=UNPAID, status=PENDING. Admin reviews in the panel and manually sets CONFIRMED. Confirmation email sent at that point. No payment gateway involved.</p></div>
+  </details>
+</section>
+
+<!-- EMAILS -->
+<section id="emails">
+  <div class="sec-lbl">Section 5</div>
+  <h2>All 14 Email Templates</h2>
+  <p>Every email extends <code>resources/views/components/emails/layout.blade.php</code> — brand header with logo, green CTA buttons, professional footer. All sent synchronously (no ShouldQueue) for guaranteed delivery.</p>
+
+  <h3>Customer Transactional (9)</h3>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Class</th><th>Trigger</th><th>Recipient</th><th>Key Content</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><code>WelcomeEmail</code></td><td>New user registers</td><td>New customer</td><td>Personalized greeting (first name), brand story, shop now CTA</td></tr>
+      <tr><td>2</td><td><code>OrderConfirmed</code></td><td>Payment verified via webhook</td><td>Customer</td><td>Order summary, itemized list, PDF invoice attached, delivery timeline</td></tr>
+      <tr><td>3</td><td><code>OrderDispatched</code></td><td>Admin sets DISPATCHED or OUT_FOR_DELIVERY</td><td>Customer</td><td>Order shipped, expected delivery window</td></tr>
+      <tr><td>4</td><td><code>OrderDelivered</code></td><td>Admin sets DELIVERED</td><td>Customer</td><td>Delivery confirmed, rate &amp; review CTA</td></tr>
+      <tr><td>5</td><td><code>OrderCancelled</code></td><td>Admin sets CANCELLED</td><td>Customer</td><td>Cancellation notice, reason, refund info, shop again CTA</td></tr>
+      <tr><td>6</td><td><code>OrderRefunded</code></td><td>Admin sets REFUNDED</td><td>Customer</td><td>Refund amount, 3–7 business day timeline, support contact</td></tr>
+      <tr><td>7</td><td><code>PaymentFailed</code></td><td>Payment callback with failed status</td><td>Customer</td><td>Failure notice, retry link, alternative payment methods</td></tr>
+      <tr><td>8</td><td><code>ContactAutoReply</code></td><td>Customer submits contact form</td><td>Form sender</td><td>Receipt confirmed, 24h response promise, WhatsApp alternative</td></tr>
+      <tr><td>9</td><td><code>NewsletterConfirmation</code></td><td>Newsletter subscription</td><td>Subscriber</td><td>Subscription confirmed, what to expect, unsubscribe link</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Admin Notification (4)</h3>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Class</th><th>Trigger</th><th>Key Content</th></tr></thead>
+    <tbody>
+      <tr><td>10</td><td><code>ContactAdminAlert</code></td><td>Contact form submitted</td><td>Full message, sender name/email/phone. Reply-To set to sender for one-click reply.</td></tr>
+      <tr><td>11</td><td><code>NewUserAdminAlert</code></td><td>New user registers</td><td>New user's name, email, registration time. View in admin CTA.</td></tr>
+      <tr><td>12</td><td><code>OrderAdminAlert</code></td><td>Order payment confirmed</td><td>Full order details — items, total, payment method, customer info.</td></tr>
+      <tr><td>13</td><td><code>LowStockAlert</code></td><td>Stock drops to/below threshold on product update</td><td>Product name, current stock, threshold, SKU. Manage inventory CTA.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Marketing (1)</h3>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Class</th><th>Trigger</th><th>Recipients</th></tr></thead>
+    <tbody>
+      <tr><td>14</td><td><code>NewProductAlert</code></td><td>Admin creates product with "Notify subscribers" checked</td><td>All active newsletter subscribers + all registered customers (deduplicated, batched 50/chunk)</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card">
+    <h4>Admin Email — Single Source of Truth</h4>
+    <p>All admin emails use <code>SiteSetting::adminEmail()</code>. Priority:</p>
+    <ol style="padding-left:20px;color:var(--ts);margin-top:8px;line-height:2.2">
+      <li><strong>MAIL_ADMIN_ADDRESS</strong> env var (highest — set this in production)</li>
+      <li><strong>contact_email</strong> site setting (Admin panel → Settings)</li>
+      <li><strong>MAIL_FROM_ADDRESS</strong> env var (fallback)</li>
+    </ol>
+  </div>
+</section>
+
+<!-- PUSH -->
+<section id="push">
+  <div class="sec-lbl">Section 6</div>
+  <h2>Push Notifications — OneSignal</h2>
+  <div class="card-grid">
+    <div class="card"><h4>App ID</h4><p>Set via <code>ONESIGNAL_APP_ID</code> in .env</p></div>
+    <div class="card"><h4>REST API Key</h4><p>Set via <code>ONESIGNAL_REST_API_KEY</code> in .env</p></div>
+    <div class="card"><h4>SDK Worker</h4><p><code>public/OneSignalSDKWorker.js</code> at web root — required by all browsers for push delivery</p></div>
+    <div class="card"><h4>SDK Init</h4><p>Injected via OneSignalSDK.page.js CDN script in both app and admin layouts. Admins tagged with user_id for targeting.</p></div>
+  </div>
+
+  <h3>Auto-Triggered Push Notifications</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Trigger Event</th><th>Message Sent</th></tr></thead>
+    <tbody>
+      <tr><td>Payment confirmed (Paystack/Flutterwave)</td><td>Your order TAK-xxxx has been confirmed! We're preparing it now.</td></tr>
+      <tr><td>Admin → DISPATCHED</td><td>Your order TAK-xxxx is on its way!</td></tr>
+      <tr><td>Admin → OUT_FOR_DELIVERY</td><td>Your order TAK-xxxx is out for delivery. Expect it today!</td></tr>
+      <tr><td>Admin → DELIVERED</td><td>Your order TAK-xxxx has been delivered. Enjoy!</td></tr>
+      <tr><td>Admin → CANCELLED</td><td>Your order TAK-xxxx has been cancelled.</td></tr>
+      <tr><td>Admin → REFUNDED</td><td>Refund initiated for order TAK-xxxx.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Admin Manual Push — /admin/notifications</h3>
+  <ul class="check" style="margin-bottom:16px">
+    <li>Compose title (max 100 chars) + message body (max 300 chars)</li>
+    <li>Optional link URL (opens when user taps notification)</li>
+    <li>Choose audience: All Subscribers / Opted-In Users / All Devices</li>
+    <li>Live preview panel updates as you type</li>
+    <li>Full history log — all sent notifications, sender name, timestamp, success/fail status</li>
+    <li>Visible only to SUPER_ADMIN in sidebar under Settings</li>
+  </ul>
+</section>
+
+<!-- SMS -->
+<section id="sms">
+  <div class="sec-lbl">Section 7</div>
+  <h2>SMS Notifications — Termii</h2>
+  <p>Nigerian SMS gateway via Termii REST API. Handles number normalization (0812xxx → 2348012xxx). Sender ID: <code>TAKOMZ</code>.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Trigger</th><th>Message</th></tr></thead>
+    <tbody>
+      <tr><td>Order CONFIRMED</td><td>Your T-Akomz order TAK-xxxx (₦X,XXX) is confirmed! We're preparing it now.</td></tr>
+      <tr><td>DISPATCHED / OUT_FOR_DELIVERY</td><td>Great news! Your T-Akomz order TAK-xxxx is on its way to you.</td></tr>
+      <tr><td>DELIVERED</td><td>Your T-Akomz order TAK-xxxx has been delivered. Enjoy your purchase!</td></tr>
+      <tr><td>CANCELLED</td><td>Your T-Akomz order TAK-xxxx has been cancelled. Contact us for assistance.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- AI -->
+<section id="ai">
+  <div class="sec-lbl">Section 8</div>
+  <h2>AI Features</h2>
+  <h3>Public AI Chat Widget</h3>
+  <div class="card"><p>Floating chat button on all public pages. Backend routes through AiAssistantService using GROQ LLaMA 3.3-70B (primary) with Gemini 2.0 Flash automatic fallback. Handles product questions, pricing, farm info, ordering, and delivery. Returns product suggestion cards inline in responses.</p></div>
+
+  <h3>Admin AI Assistant — /admin/ai</h3>
+  <div class="card-grid">
+    <div class="card"><h4>Product Content</h4><p>Input: product type + category. Output: name, short/full description, tags, price suggestion, unit. One-click insert into product form.</p></div>
+    <div class="card"><h4>Business Plan</h4><p>Generates investor-ready business plan — executive summary, market analysis, financial projections, operational strategy.</p></div>
+    <div class="card"><h4>Sales Insights</h4><p>Reads real sales data, returns: top performers, underperformers, seasonal patterns, pricing recommendations, action steps.</p></div>
+    <div class="card"><h4>Blog Post Generator</h4><p>Input: topic + category → 600+ word SEO blog post. Fetches Pexels image. Can auto-publish directly.</p></div>
+  </div>
+
+  <h3>Auto-Publish Command</h3>
+  <pre>php artisan blog:auto-publish --topic="Poultry Farming" --category="Farming Tips"
+php artisan blog:auto-publish   # uses 10 built-in farming topics</pre>
+</section>
+
+<!-- PWA -->
+<section id="pwa">
+  <div class="sec-lbl">Section 9</div>
+  <h2>Progressive Web App (PWA)</h2>
+  <div class="card-grid">
+    <div class="card"><h4>Manifest</h4><p>public/manifest.json — app name, short name "T-Akomz", theme color #B8F397, display: standalone, all icon sizes 72px–512px.</p></div>
+    <div class="card"><h4>Service Worker</h4><p>public/sw.js — cache-first for assets, network-first for pages, offline fallback at /offline route.</p></div>
+    <div class="card"><h4>OneSignal Worker</h4><p>public/OneSignalSDKWorker.js — separate from PWA SW. Must be at web root. Imports OneSignal push SDK via importScripts.</p></div>
+    <div class="card"><h4>Icons</h4><p>php artisan pwa:icons generates all required sizes from the master SVG logo.</p></div>
+  </div>
+</section>
+
+<!-- ROUTES -->
+<section id="routes">
+  <div class="sec-lbl">Section 10</div>
+  <h2>Key Routes</h2>
+
+  <details open>
+    <summary>Public Website</summary>
+    <div><div class="tw" style="margin:0"><table>
+      <thead><tr><th>Method</th><th>URL</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>GET</td><td><code>/</code></td><td>Homepage — hero, features, products, team, testimonials</td></tr>
+        <tr><td>GET</td><td><code>/about</code></td><td>About T-Akomz Agro Estates</td></tr>
+        <tr><td>GET</td><td><code>/shop</code></td><td>Product listing with category + search filters</td></tr>
+        <tr><td>GET</td><td><code>/shop/{category}/{product}</code></td><td>Product detail page with images, reviews, related</td></tr>
+        <tr><td>GET</td><td><code>/cart</code></td><td>Cart page — items, coupon, order summary</td></tr>
+        <tr><td>GET/POST</td><td><code>/checkout</code></td><td>Checkout + place order + initialize payment gateway</td></tr>
+        <tr><td>GET</td><td><code>/checkout/success</code></td><td>Order success page</td></tr>
+        <tr><td>GET</td><td><code>/blog</code></td><td>Blog listing</td></tr>
+        <tr><td>GET</td><td><code>/blog/{slug}</code></td><td>Blog post detail</td></tr>
+        <tr><td>GET/POST</td><td><code>/contact</code></td><td>Contact form + auto-reply + admin alert</td></tr>
+        <tr><td>GET</td><td><code>/farm-tour</code></td><td>Farm tour booking page</td></tr>
+        <tr><td>GET</td><td><code>/orders/track</code></td><td>Public order tracking (no login required)</td></tr>
+        <tr><td>GET</td><td><code>/gallery</code></td><td>Farm photo gallery</td></tr>
+        <tr><td>GET</td><td><code>/faq</code></td><td>FAQ page</td></tr>
+      </tbody>
+    </table></div></div>
+  </details>
+
+  <details>
+    <summary>Customer Account (/account/*) — auth required</summary>
+    <div><div class="tw" style="margin:0"><table>
+      <thead><tr><th>URL</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>/account</code></td><td>Dashboard — stats, recent orders, quick actions</td></tr>
+        <tr><td><code>/account/orders</code></td><td>Full order history</td></tr>
+        <tr><td><code>/account/orders/{order}</code></td><td>Order detail + status timeline</td></tr>
+        <tr><td><code>/account/orders/{order}/invoice</code></td><td>Download PDF invoice</td></tr>
+        <tr><td><code>/account/wishlist</code></td><td>Saved wishlist items</td></tr>
+        <tr><td><code>/account/addresses</code></td><td>Manage saved delivery addresses</td></tr>
+        <tr><td><code>/account/profile</code></td><td>Edit profile + change password</td></tr>
+      </tbody>
+    </table></div></div>
+  </details>
+
+  <details>
+    <summary>Admin Panel (/admin/*) — auth + admin role</summary>
+    <div><div class="tw" style="margin:0"><table>
+      <thead><tr><th>URL</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>/admin</code></td><td>Dashboard — KPI cards, recent orders, low stock alerts</td></tr>
+        <tr><td><code>/admin/orders</code></td><td>All orders with search + date + status filters</td></tr>
+        <tr><td><code>/admin/products</code></td><td>Products CRUD — create/edit/delete, images, nutrition facts</td></tr>
+        <tr><td><code>/admin/categories</code></td><td>Categories CRUD + drag-reorder</td></tr>
+        <tr><td><code>/admin/customers</code></td><td>Customer list + detail view</td></tr>
+        <tr><td><code>/admin/users</code></td><td>Staff/admin user management</td></tr>
+        <tr><td><code>/admin/blog</code></td><td>Blog post management + AI auto-publish</td></tr>
+        <tr><td><code>/admin/inventory</code></td><td>Stock levels + bulk update</td></tr>
+        <tr><td><code>/admin/promotions</code></td><td>Coupon/discount management</td></tr>
+        <tr><td><code>/admin/analytics</code></td><td>Sales analytics dashboard</td></tr>
+        <tr><td><code>/admin/settings</code></td><td>Site settings — SUPER_ADMIN only</td></tr>
+        <tr><td><code>/admin/ai</code></td><td>AI assistant tools (4 modes)</td></tr>
+        <tr><td><code>/admin/notifications</code></td><td>Push notification compose + history — SUPER_ADMIN only</td></tr>
+        <tr><td><code>/admin/gallery</code></td><td>Farm photo gallery management</td></tr>
+        <tr><td><code>/admin/team</code></td><td>Team member management</td></tr>
+        <tr><td><code>/admin/tour-bookings</code></td><td>Farm tour booking management</td></tr>
+        <tr><td><code>/admin/livestock</code></td><td>Livestock batch tracking (ERP)</td></tr>
+        <tr><td><code>/admin/farm-supplies</code></td><td>Farm supply inventory (ERP)</td></tr>
+      </tbody>
+    </table></div></div>
+  </details>
+
+  <details>
+    <summary>API Webhooks</summary>
+    <div><div class="tw" style="margin:0"><table>
+      <thead><tr><th>Method</th><th>URL</th><th>Security</th></tr></thead>
+      <tbody>
+        <tr><td>POST</td><td><code>/api/payment/paystack/webhook</code></td><td>HMAC-SHA512 signature verified against x-paystack-signature header</td></tr>
+        <tr><td>POST</td><td><code>/api/payment/flutterwave/webhook</code></td><td>Secret hash compared against verif-hash header</td></tr>
+      </tbody>
+    </table></div></div>
+  </details>
+</section>
+
+<!-- COMMANDS -->
+<section id="commands">
+  <div class="sec-lbl">Section 11</div>
+  <h2>CLI Commands</h2>
+  <pre># Start development
+php artisan serve                          # Laravel dev server (port 8000)
+npm run dev                                # Vite hot-reload (CSS + JS)
+
+# Database
+php artisan migrate
+php artisan migrate:fresh --seed           # Full reset + seed data
+php artisan db:seed
+
+# Storage
+php artisan storage:link                   # Symlink storage to public/storage
+
+# AI Blog
+php artisan blog:auto-publish
+php artisan blog:auto-publish --topic="..." --category="Farming Tips"
+
+# PWA
+php artisan pwa:icons                      # Generate icon sizes from SVG logo
+
+# Sitemap
+php artisan sitemap:generate
+
+# Cache
+php artisan config:clear
+php artisan view:clear
+php artisan cache:clear</pre>
+</section>
+
+<!-- ENV VARS -->
+<section id="env">
+  <div class="sec-lbl">Section 12</div>
+  <h2>Environment Variables</h2>
+
+  <div class="env-group">
+    <h4>Application</h4>
+    <div class="env-row"><span class="env-k">APP_NAME</span><span class="env-d">T-Akomz Agro Estates</span></div>
+    <div class="env-row"><span class="env-k">APP_ENV</span><span class="env-d">local | production</span></div>
+    <div class="env-row"><span class="env-k">APP_KEY</span><span class="env-d">Generated via php artisan key:generate</span></div>
+    <div class="env-row"><span class="env-k">APP_URL</span><span class="env-d">Full URL including https:// for production</span></div>
+  </div>
+
+  <div class="env-group">
+    <h4>Email (SMTP)</h4>
+    <div class="env-row"><span class="env-k">MAIL_MAILER</span><span class="env-d">smtp (use mailgun or ses in production)</span></div>
+    <div class="env-row"><span class="env-k">MAIL_HOST</span><span class="env-d">sandbox.smtp.mailtrap.io (dev) or your SMTP host</span></div>
+    <div class="env-row"><span class="env-k">MAIL_PORT</span><span class="env-d">2525 (Mailtrap) or 587 (production)</span></div>
+    <div class="env-row"><span class="env-k">MAIL_ENCRYPTION</span><span class="env-d">tls</span></div>
+    <div class="env-row"><span class="env-k">MAIL_USERNAME</span><span class="env-d">SMTP username</span></div>
+    <div class="env-row"><span class="env-k">MAIL_PASSWORD</span><span class="env-d">SMTP password</span></div>
+    <div class="env-row"><span class="env-k">MAIL_FROM_ADDRESS</span><span class="env-d">noreply@takomzagro.com</span></div>
+    <div class="env-row"><span class="env-k">MAIL_FROM_NAME</span><span class="env-d">T-Akomz Agro Estates</span></div>
+    <div class="env-row"><span class="env-k">MAIL_ADMIN_ADDRESS</span><span class="env-d">Business email — all admin alerts route here (highest priority)</span></div>
+  </div>
+
+  <div class="env-group">
+    <h4>Paystack</h4>
+    <div class="env-row"><span class="env-k">PAYSTACK_PUBLIC_KEY</span><span class="env-d">Paystack dashboard → Settings → API Keys</span></div>
+    <div class="env-row"><span class="env-k">PAYSTACK_SECRET_KEY</span><span class="env-d">Secret key — never expose client-side</span></div>
+    <div class="env-row"><span class="env-k">PAYSTACK_PAYMENT_URL</span><span class="env-d">https://api.paystack.co</span></div>
+  </div>
+
+  <div class="env-group">
+    <h4>Flutterwave</h4>
+    <div class="env-row"><span class="env-k">FLUTTERWAVE_PUBLIC_KEY</span><span class="env-d">Flutterwave dashboard → Settings → API Keys</span></div>
+    <div class="env-row"><span class="env-k">FLUTTERWAVE_SECRET_KEY</span><span class="env-d">Secret key</span></div>
+    <div class="env-row"><span class="env-k">FLUTTERWAVE_SECRET_HASH</span><span class="env-d">Webhook hash for signature validation</span></div>
+  </div>
+
+  <div class="env-group">
+    <h4>OneSignal Push Notifications</h4>
+    <div class="env-row"><span class="env-k">ONESIGNAL_APP_ID</span><span class="env-d">OneSignal → Settings → Keys &amp; IDs → App ID</span></div>
+    <div class="env-row"><span class="env-k">ONESIGNAL_REST_API_KEY</span><span class="env-d">OneSignal → Settings → Keys &amp; IDs → REST API Key</span></div>
+  </div>
+
+  <div class="env-group">
+    <h4>AI Services</h4>
+    <div class="env-row"><span class="env-k">GROQ_API_KEY</span><span class="env-d">console.groq.com → API Keys</span></div>
+    <div class="env-row"><span class="env-k">GROQ_MODEL</span><span class="env-d">llama-3.3-70b-versatile (default)</span></div>
+    <div class="env-row"><span class="env-k">GEMINI_API_KEY</span><span class="env-d">aistudio.google.com → API Keys (Gemini fallback)</span></div>
+    <div class="env-row"><span class="env-k">PEXELS_API_KEY</span><span class="env-d">pexels.com/api → free tier for blog images</span></div>
+  </div>
+
+  <div class="env-group">
+    <h4>Termii SMS</h4>
+    <div class="env-row"><span class="env-k">TERMII_API_KEY</span><span class="env-d">Termii dashboard → API Keys</span></div>
+    <div class="env-row"><span class="env-k">TERMII_SENDER_ID</span><span class="env-d">TAKOMZ (must be pre-approved by Termii)</span></div>
+  </div>
+</section>
+
+<!-- BUILD PHASES -->
+<section id="phases">
+  <div class="sec-lbl">Section 13</div>
+  <h2>Build Phases &amp; Status</h2>
+
+  <h3>✅ Completed</h3>
+  <div class="card" style="margin-bottom:20px">
+    <ul class="check" style="column-count:2;column-gap:24px">
+      <li>All database migrations &amp; models (17 tables)</li>
+      <li>Seeders (admin, categories, products, settings)</li>
+      <li>Master layouts — public, admin, auth</li>
+      <li>Dark theme + light mode toggle (persisted)</li>
+      <li>Premium homepage with animated sections</li>
+      <li>Shop listing + category + product detail</li>
+      <li>Cart — session + DB, merge on login</li>
+      <li>3-step checkout flow</li>
+      <li>Order success + public tracking page</li>
+      <li>Customer account dashboard</li>
+      <li>Order history + detail + PDF invoice</li>
+      <li>Wishlist with navbar badge</li>
+      <li>Saved addresses management</li>
+      <li>Profile + password change</li>
+      <li>Paystack full payment flow</li>
+      <li>Flutterwave full payment flow</li>
+      <li>Cash on delivery flow</li>
+      <li>All 14 email templates</li>
+      <li>SMS notifications (Termii)</li>
+      <li>OneSignal push notifications</li>
+      <li>Admin push compose page + history</li>
+      <li>Admin dashboard (KPI cards)</li>
+      <li>Products CRUD + WebP image upload</li>
+      <li>Categories CRUD + reorder</li>
+      <li>Orders management + status updates</li>
+      <li>Customer management</li>
+      <li>Staff/user management (RBAC)</li>
+      <li>Blog post management + AI publish</li>
+      <li>Inventory management + bulk update</li>
+      <li>Promotions / coupons</li>
+      <li>Analytics dashboard</li>
+      <li>Site settings panel</li>
+      <li>Admin AI assistant (4 tools)</li>
+      <li>Public AI chat widget (GROQ + Gemini)</li>
+      <li>AI blog auto-publish + Pexels images</li>
+      <li>PDF invoice (dompdf — auto-attached)</li>
+      <li>Gallery management</li>
+      <li>Team member management</li>
+      <li>Farm tour bookings</li>
+      <li>Farm ERP — Livestock batch tracking</li>
+      <li>Farm ERP — Farm supplies inventory</li>
+      <li>Farm ERP — Operations overview</li>
+      <li>PWA (manifest + service worker)</li>
+      <li>Sitemap generation</li>
+      <li>SEO — Open Graph + Twitter card meta</li>
+      <li>Newsletter subscribe + confirmation</li>
+      <li>Product reviews (admin moderated)</li>
+    </ul>
+  </div>
+
+  <h3>⬜ Remaining / Enhancements</h3>
+  <div class="card">
+    <ul class="check pend">
+      <li>Bot protection — honeypot + timing on Register, Contact, Newsletter forms</li>
+      <li>Excel exports — Orders + Products spreadsheet download</li>
+      <li>Blog rich text editor (TipTap or Quill)</li>
+      <li>Full analytics charts (Chart.js — revenue over time, top products)</li>
+      <li>Finance ERP — budget tracking, expense approvals workflow</li>
+      <li>Email verification on registration (Laravel built-in)</li>
+      <li>Two-factor auth for admin accounts</li>
+      <li>Subscription box management (recurring orders)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BUSINESS INFO -->
+<section id="biz">
+  <div class="sec-lbl">Section 14</div>
+  <h2>Business Information</h2>
+  <div class="card-grid">
+    <div class="card"><h4>Company</h4><p>T-Akomz Agro Estates Ltd — Premium agricultural produce and farm services.</p></div>
+    <div class="card"><h4>Location</h4><p>Oke-Ido Road, Ido Ekiti, Ekiti State, Nigeria</p></div>
+    <div class="card"><h4>Domain</h4><p>takomzagro.com · takomzagro.ng (recommended)</p></div>
+    <div class="card"><h4>Currency</h4><p>Nigerian Naira (₦). Formatted as ₦X,XXX throughout the platform.</p></div>
+    <div class="card"><h4>Order Numbers</h4><p><code>TAK-YYYY-NNNNN</code> e.g. TAK-2026-00001. Auto-generated on order creation.</p></div>
+    <div class="card"><h4>Brand Colors</h4><p>Primary #B8F397 · Dark Green #6FAE4B · Background #050505 · Surface #111111</p></div>
+    <div class="card"><h4>Product Categories</h4><p>Poultry · Eggs · Livestock · Crop Produce · Dairy · Organic Inputs · Subscription Boxes</p></div>
+    <div class="card"><h4>Fonts</h4><p>Playfair Display (headings) · DM Sans (body) · JetBrains Mono (order IDs)</p></div>
+  </div>
+  <hr>
+  <p style="text-align:center;color:var(--tm);font-size:13px">
+    T-Akomz Agro Estates Ltd &mdash; Platform Blueprint v2.0 &mdash; May 2026<br>
+    Laravel 13 · Alpine.js · Tailwind CSS v3 · OneSignal · Paystack · Flutterwave · GROQ AI
+  </p>
+</section>
+
+</main>
+</body>
+</html>

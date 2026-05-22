@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" fill="none">
+  <!-- Outer droplet -->
+  <path d="M100 8 C100 8 34 76 34 118 C34 152 64 176 100 176 C136 176 166 152 166 118 C166 76 100 8 100 8 Z"
+        stroke="#B8F397" stroke-width="6" fill="none" stroke-linejoin="round"/>
+
+  <!-- Seedling stem -->
+  <line x1="100" y1="158" x2="100" y2="88" stroke="#B8F397" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Left leaf -->
+  <path d="M100 136 C100 136 68 127 66 103 C64 83 82 75 96 87"
+        stroke="#B8F397" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Right leaf -->
+  <path d="M100 116 C100 116 132 107 134 83 C136 63 118 55 104 67"
+        stroke="#B8F397" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Water ripple below drop -->
+  <path d="M58 172 Q100 188 142 172"
+        stroke="#B8F397" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- T-AKOMZ -->
+  <text x="100" y="204"
+        text-anchor="middle"
+        fill="#B8F397"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-weight="700"
+        font-size="22"
+        letter-spacing="5">T-AKOMZ</text>
+
+  <!-- AGRO ESTATES LTD -->
+  <text x="100" y="218"
+        text-anchor="middle"
+        fill="#B8F397"
+        font-family="Arial, sans-serif"
+        font-weight="400"
+        font-size="8.5"
+        letter-spacing="4.5">AGRO ESTATES LTD</text>
+</svg>

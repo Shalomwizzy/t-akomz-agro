@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T-Akomz Agro Estates — Complete Website Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #B8F397; --green-dark: #6FAE4B; --bg: #050505;
+    --surface: #111111; --elevated: #1A1A1A; --border: #2A2A2A;
+    --text: #F5F5F5; --muted: #888888;
+    --accent: rgba(184,243,151,0.12); --accent-b: rgba(184,243,151,0.25);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; font-size: 15px; }
+
+  /* COVER */
+  .cover { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 24px; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,243,151,0.08) 0%, transparent 70%); pointer-events: none; }
+  .cover-brand { font-size: 11px; font-weight: 700; letter-spacing: 6px; color: var(--green); text-transform: uppercase; margin-bottom: 6px; }
+  .cover-tagline-small { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 56px; }
+  .cover-title { font-family: 'Playfair Display', serif; font-size: clamp(36px,6vw,72px); font-weight: 900; line-height: 1.1; letter-spacing: -1.5px; color: var(--text); margin-bottom: 24px; max-width: 800px; }
+  .cover-title span { color: var(--green); }
+  .cover-subtitle { font-size: 17px; color: var(--muted); max-width: 600px; line-height: 1.7; margin-bottom: 56px; }
+  .cover-meta { display: flex; gap: 32px; flex-wrap: wrap; justify-content: center; }
+  .cover-meta-item { text-align: center; }
+  .cover-meta-item .num { display: block; font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--green); line-height: 1; }
+  .cover-meta-item .lbl { display: block; font-size: 11px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+  .cover-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent 0%, var(--green) 20%, var(--green-dark) 50%, var(--green) 80%, transparent 100%); }
+
+  /* LAYOUT */
+  .layout { display: flex; min-height: 100vh; }
+
+  /* TOC SIDEBAR */
+  .toc { width: 290px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background: var(--surface); border-right: 1px solid var(--border); padding: 28px 0; }
+  .toc::-webkit-scrollbar { width: 4px; }
+  .toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .toc-header { padding: 0 22px 18px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+  .toc-header .t { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+  .toc-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.2); text-transform: uppercase; margin: 14px 22px 4px; }
+  .toc a { display: block; font-size: 12.5px; color: var(--muted); text-decoration: none; padding: 4px 22px; border-left: 2px solid transparent; transition: all 0.15s; }
+  .toc a:hover { color: var(--text); background: rgba(255,255,255,0.03); border-left-color: var(--green); }
+
+  /* MAIN */
+  .main { flex: 1; min-width: 0; padding: 64px 56px 140px; max-width: 900px; }
+  @media (max-width: 900px) { .layout { flex-direction: column; } .toc { width: 100%; height: auto; position: relative; } .main { padding: 40px 24px 80px; } }
+
+  /* PART HEADER */
+  .part-header { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-top: 72px; }
+  .part-header:first-child { margin-top: 0; }
+  .part-num { width: 52px; height: 52px; border-radius: 14px; background: var(--accent); border: 1px solid var(--accent-b); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--green); flex-shrink: 0; }
+  .part-title { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 800; line-height: 1.15; color: var(--text); letter-spacing: -0.5px; }
+  .part-title span { color: var(--green); }
+
+  /* SECTION */
+  .section { margin-bottom: 52px; }
+  .section-num { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--green); text-transform: uppercase; margin-bottom: 8px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 16px; letter-spacing: -0.3px; }
+  .section p { color: rgba(245,245,245,0.78); margin-bottom: 14px; font-size: 15px; }
+  .section p:last-child { margin-bottom: 0; }
+  .section ul, .section ol { margin: 12px 0 16px 22px; }
+  .section li { color: rgba(245,245,245,0.78); margin-bottom: 8px; font-size: 15px; }
+
+  /* CALLOUT */
+  .callout { border-radius: 12px; padding: 18px 22px; margin: 20px 0; border-left: 4px solid; }
+  .callout.green { background: rgba(184,243,151,0.07); border-left-color: var(--green); }
+  .callout.blue { background: rgba(41,182,246,0.07); border-left-color: #29B6F6; }
+  .callout.yellow { background: rgba(245,166,35,0.07); border-left-color: #F5A623; }
+  .callout.red { background: rgba(239,68,68,0.07); border-left-color: #EF4444; }
+  .callout-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .callout.green .callout-title { color: var(--green); }
+  .callout.blue .callout-title { color: #29B6F6; }
+  .callout.yellow .callout-title { color: #F5A623; }
+  .callout.red .callout-title { color: #EF4444; }
+  .callout p { font-size: 14px; color: rgba(245,245,245,0.72); margin: 0; line-height: 1.7; }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead tr { background: var(--elevated); }
+  thead th { padding: 13px 18px; text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  tbody td { padding: 12px 18px; color: rgba(245,245,245,0.75); vertical-align: top; }
+  tbody td:first-child { font-weight: 600; color: var(--text); }
+
+  /* STEP LIST */
+  .steps { counter-reset: step; list-style: none; margin: 20px 0; padding: 0; }
+  .steps li { counter-increment: step; display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+  .steps li::before { content: counter(step); display: flex; align-items: center; justify-content: center; min-width: 32px; height: 32px; border-radius: 50%; background: var(--accent); border: 1px solid var(--accent-b); color: var(--green); font-weight: 700; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+  .steps li div { color: rgba(245,245,245,0.78); font-size: 15px; line-height: 1.7; }
+  .steps li div strong { color: var(--text); }
+
+  /* GRID CARDS */
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 20px 0; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  @media (max-width: 700px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+  .card-icon { font-size: 28px; margin-bottom: 12px; }
+  .card h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .card p { font-size: 13.5px; color: rgba(245,245,245,0.65); line-height: 1.65; margin: 0; }
+
+  /* BADGE */
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+  .badge.green { background: rgba(184,243,151,0.15); color: var(--green); }
+  .badge.blue { background: rgba(41,182,246,0.15); color: #29B6F6; }
+  .badge.yellow { background: rgba(245,166,35,0.15); color: #F5A623; }
+  .badge.red { background: rgba(239,68,68,0.15); color: #EF4444; }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 48px 0; }
+
+  /* HIGHLIGHT BOX */
+  .highlight { background: var(--elevated); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin: 20px 0; }
+  .highlight h4 { font-size: 14px; font-weight: 700; color: var(--green); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+  .highlight p, .highlight li { font-size: 14px; color: rgba(245,245,245,0.72); line-height: 1.7; }
+  .highlight ul { margin: 8px 0 0 18px; }
+  .highlight li { margin-bottom: 5px; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ COVER PAGE ═══════════════ -->
+<div class="cover">
+  <div class="cover-brand">T-Akomz Agro Estates Ltd</div>
+  <div class="cover-tagline-small">Oke-Ido Road · Ido Ekiti · Ekiti State · Nigeria</div>
+  <h1 class="cover-title">Your Complete <span>Website Guide</span></h1>
+  <p class="cover-subtitle">A full, plain-English explanation of every single thing your website can do — written so anyone can understand it, from first-time computer users to business managers.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><span class="num">10</span><span class="lbl">Major Parts</span></div>
+    <div class="cover-meta-item"><span class="num">40+</span><span class="lbl">Features Explained</span></div>
+    <div class="cover-meta-item"><span class="num">2025</span><span class="lbl">Edition</span></div>
+  </div>
+  <div class="cover-accent"></div>
+</div>
+
+<!-- ═══════════════ MAIN LAYOUT ═══════════════ -->
+<div class="layout">
+
+  <!-- SIDEBAR TOC -->
+  <nav class="toc">
+    <div class="toc-header"><div class="t">Table of Contents</div></div>
+
+    <div class="toc-label">Overview</div>
+    <a href="#part1">1. What Is This Website?</a>
+    <a href="#what-customers-see">What Customers See</a>
+    <a href="#what-you-control">What You Control</a>
+
+    <div class="toc-label">Customer Experience</div>
+    <a href="#part2">2. The Public Website</a>
+    <a href="#homepage">Homepage</a>
+    <a href="#shop">The Shop</a>
+    <a href="#product-page">Product Pages</a>
+    <a href="#cart">The Cart</a>
+    <a href="#checkout">Checkout</a>
+    <a href="#payments">Payments (All Methods)</a>
+    <a href="#order-success">After Payment</a>
+
+    <div class="toc-label">Customer Accounts</div>
+    <a href="#part3">3. Customer Accounts</a>
+    <a href="#register-login">Register &amp; Login</a>
+    <a href="#account-dashboard">Account Dashboard</a>
+    <a href="#my-orders">My Orders</a>
+    <a href="#wishlist">Wishlist</a>
+    <a href="#addresses">Saved Addresses</a>
+    <a href="#profile">Profile &amp; Password</a>
+
+    <div class="toc-label">Admin Panel</div>
+    <a href="#part4">4. Admin Panel Overview</a>
+    <a href="#who-is-admin">Who Can Log In</a>
+    <a href="#admin-dashboard">Dashboard Numbers</a>
+    <a href="#part5">5. Managing Products</a>
+    <a href="#add-product">Adding a Product</a>
+    <a href="#edit-product">Editing a Product</a>
+    <a href="#product-images">Product Images</a>
+    <a href="#categories">Categories</a>
+    <a href="#inventory">Inventory &amp; Stock</a>
+    <a href="#part6">6. Managing Orders</a>
+    <a href="#orders-list">Orders List</a>
+    <a href="#order-detail">Order Detail</a>
+    <a href="#order-status">Changing Status</a>
+    <a href="#invoices">Invoices &amp; PDF</a>
+
+    <div class="toc-label">People</div>
+    <a href="#part7">7. Customers &amp; Staff</a>
+    <a href="#customers-admin">Customer List</a>
+    <a href="#staff-management">Staff (Users)</a>
+    <a href="#workers">Farm Workers</a>
+
+    <div class="toc-label">Finance</div>
+    <a href="#part8">8. Financial System</a>
+    <a href="#wallet">Business Wallet</a>
+    <a href="#expenses">Expenses</a>
+    <a href="#payroll">Payroll &amp; Salaries</a>
+    <a href="#financial-reports">Financial Reports</a>
+
+    <div class="toc-label">Communications</div>
+    <a href="#part9">9. Emails &amp; Notifications</a>
+    <a href="#auto-emails">Automatic Emails</a>
+    <a href="#mail-broadcast">Broadcast Emails</a>
+    <a href="#sms">SMS Notifications</a>
+
+    <div class="toc-label">More Features</div>
+    <a href="#part10">10. Other Admin Tools</a>
+    <a href="#blog">Blog / News</a>
+    <a href="#settings">Site Settings</a>
+    <a href="#ai-tools">AI Assistant Tools</a>
+    <a href="#pwa">Mobile App (PWA)</a>
+    <a href="#security">Security</a>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+<!-- DOWNLOAD / PRINT BAR -->
+<div style="display:flex;gap:12px;justify-content:flex-end;margin-bottom:32px;flex-wrap:wrap;">
+  <a href="client-guide.html" download="T-Akomz-Website-Guide.html"
+     style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:10px;background:rgba(184,243,151,0.12);border:1px solid rgba(184,243,151,0.3);color:#B8F397;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;">
+    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+    </svg>
+    Download Guide
+  </a>
+  <button onclick="window.print()"
+     style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#888;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;">
+    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+    </svg>
+    Save as PDF
+  </button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PART 1 — WHAT IS THIS WEBSITE?
+══════════════════════════════════════════════════════ -->
+<div id="part1" class="part-header" style="margin-top:0">
+  <div class="part-num">1</div>
+  <div class="part-title">What Is <span>This Website?</span></div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 1.1</div>
+  <div id="what-customers-see" class="section-title">The Big Picture — Two Websites in One</div>
+
+  <p>Your website is actually <strong>two things working together</strong> as one system. Think of it like a shop that has a front part where customers walk in and browse, and a back office where you and your team manage everything. Both parts live at the same address on the internet, but different people see different things.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🛒</div>
+      <h4>The Public Website</h4>
+      <p>This is what your customers see when they visit your website address. Anyone in the world can see this part — no login needed. They can browse your farm products, read about your company, check prices, and place orders.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <h4>The Admin Panel</h4>
+      <p>This is the private control room that only you and your trusted team can access. You log in at <strong>/admin</strong> and from here you manage products, view orders, pay workers, send emails, track money — everything.</p>
+    </div>
+  </div>
+
+  <p>The website was built specifically for <strong>T-Akomz Agro Estates Ltd</strong>, an agricultural business in Ido Ekiti, Ekiti State. It sells farm products like poultry, eggs, livestock, crop produce, dairy, and organic inputs directly to customers online. Customers can pay with their card, bank transfer, or request cash on delivery.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 1.2</div>
+  <div id="what-you-control" class="section-title">What You Can Control</div>
+
+  <p>As the business owner or manager, you have complete control over everything. Nothing on the website is fixed or permanent — you can change it whenever you want. Here is a full list of what you can do from your admin panel:</p>
+
+  <div class="highlight">
+    <h4>Everything You Can Manage</h4>
+    <ul>
+      <li>Add, edit, or remove any product and its price</li>
+      <li>Upload product photos (multiple photos per product)</li>
+      <li>Track how many items are in stock</li>
+      <li>View every order placed by every customer</li>
+      <li>Change an order's status (e.g., mark it as delivered)</li>
+      <li>Download PDF invoices for any order</li>
+      <li>See a list of all customers and their history</li>
+      <li>Add and manage your farm workers' records</li>
+      <li>Run payroll — record and track salary payments</li>
+      <li>Track business income and expenses</li>
+      <li>Send email messages to all customers or individual ones</li>
+      <li>Send email messages to all workers or staff members</li>
+      <li>Write and publish blog/news articles</li>
+      <li>Change your business contact information</li>
+      <li>Use AI tools to write product descriptions and business plans</li>
+      <li>View sales reports and revenue charts</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 1.3</div>
+  <div class="section-title">User Roles — Who Can Do What</div>
+
+  <p>Not everyone who logs in sees the same things. The website has a <strong>role system</strong> — like giving different keys to different people. Here are the roles:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Role</th><th>Who Has It</th><th>What They Can Do</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge green">SUPER_ADMIN</span></td>
+          <td>The business owner</td>
+          <td>Everything — full access to all features including settings, financial records, user management, and the download guide button on the dashboard.</td>
+        </tr>
+        <tr>
+          <td><span class="badge blue">ADMIN</span></td>
+          <td>Senior manager</td>
+          <td>Full access to the admin panel except changing site settings and managing other admin users.</td>
+        </tr>
+        <tr>
+          <td><span class="badge yellow">MANAGER</span></td>
+          <td>Department manager</td>
+          <td>Can access the admin panel, submit expense requests, record direct expenses (with approval), manage workers and payroll.</td>
+        </tr>
+        <tr>
+          <td><span class="badge yellow">SALES</span></td>
+          <td>Sales team member</td>
+          <td>Can view orders, manage products, and use communications tools.</td>
+        </tr>
+        <tr>
+          <td><span class="badge">CUSTOMER</span></td>
+          <td>Online shoppers</td>
+          <td>Can only see the public website, their own orders, wishlist, and account. Cannot access the admin panel at all.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout yellow">
+    <div class="callout-title">Important to Know</div>
+    <p>Every person who creates an account on your website starts as a CUSTOMER automatically. Only you (as SUPER_ADMIN) can upgrade someone to a staff role like MANAGER or SALES. This means there is zero risk of a random customer accidentally accessing your admin panel.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PART 2 — THE PUBLIC WEBSITE
+══════════════════════════════════════════════════════ -->
+<div id="part2" class="part-header">
+  <div class="part-num">2</div>
+  <div class="part-title">The <span>Public Website</span></div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 2.1</div>
+  <div id="homepage" class="section-title">The Homepage</div>
+
+  <p>The homepage is the very first page a visitor sees when they type your website address into their browser. It is designed to make a strong first impression — dark, premium, and professional. Think of it as your digital shop front.</p>
+
+  <p>Here is everything that appears on the homepage, from top to bottom:</p>
+
+  <ol class="steps">
+    <li><div><strong>Navigation Bar (Navbar)</strong> — The bar at the very top of every page. It shows your logo on the left, page links in the middle (Home, Shop, About, Blog, Contact), and on the right: a search icon, a heart icon for the wishlist, a shopping cart icon with a number showing how many items are inside, and a login button. On mobile phones, the links collapse into a menu icon (three horizontal lines).</div></li>
+    <li><div><strong>Hero Section</strong> — The very first big section you see when you land on the page. It fills the entire screen. It has a large headline, a short description of your business, and two buttons: "Shop Now" (takes them to the shop) and "Learn More" (scrolls down). There is also a live animated stat counter showing business numbers.</div></li>
+    <li><div><strong>Featured Products</strong> — A row of product cards showing your best or newest products so customers can start shopping immediately without even going to the shop page.</div></li>
+    <li><div><strong>How It Works</strong> — A simple step-by-step section explaining to customers how easy it is to order from you: Browse → Add to Cart → Pay → Receive Delivery.</div></li>
+    <li><div><strong>About Section</strong> — A brief introduction to T-Akomz Agro Estates, your mission, and why customers should trust your products.</div></li>
+    <li><div><strong>Testimonials / Reviews</strong> — Customer reviews and ratings shown to build confidence in new visitors.</div></li>
+    <li><div><strong>Newsletter Signup</strong> — A box where visitors can type their email address to subscribe to your newsletter. Whenever you release a new product, they get notified by email automatically.</div></li>
+    <li><div><strong>Footer</strong> — At the very bottom of every page. Shows your contact details, business address (Oke-Ido Road, Ido Ekiti, Ekiti State), links to important pages, and social media links.</div></li>
+  </ol>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 2.2</div>
+  <div id="shop" class="section-title">The Shop Page</div>
+
+  <p>The shop page is where all your products are displayed. When a customer clicks "Shop" in the navbar, this is where they land.</p>
+
+  <p>The shop page has several helpful features:</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h4>Search</h4>
+      <p>Customers can type a product name (like "eggs" or "chicken") and the shop instantly filters to show only matching products.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📂</div>
+      <h4>Category Filter</h4>
+      <p>Customers can click a category (Poultry, Eggs, Livestock, etc.) to see only products in that group. Makes it much easier to find what they want.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">↕️</div>
+      <h4>Sort Options</h4>
+      <p>Customers can sort products by price (low to high or high to low), by newest first, or by most popular.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🃏</div>
+      <h4>Product Cards</h4>
+      <p>Each product is shown as a card with its photo, name, price, star rating, and an "Add to Cart" button. Clicking the card opens the full product page.</p>
+    </div>
+  </div>
+
+  <p>Your product categories are: <strong>Poultry</strong> (chicken, turkey, duck), <strong>Eggs</strong> (table eggs, fertilized, quail), <strong>Livestock</strong> (goat, sheep, pig), <strong>Crop Produce</strong> (maize, cassava, yam, vegetables), <strong>Dairy</strong> (milk, yogurt), <strong>Organic Inputs</strong> (compost, seedlings), and <strong>Farm Subscription Boxes</strong> (weekly delivery).</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 2.3</div>
+  <div id="product-page" class="section-title">The Product Page</div>
+
+  <p>When a customer clicks on any product card, they are taken to that product's full detail page. This page shows them everything they need to know before buying.</p>
+
+  <p>What is on a product page:</p>
+
+  <ul class="steps">
+    <li><div><strong>Product Photos</strong> — A large main photo, and smaller thumbnail photos below it. The customer can click a thumbnail to see that photo bigger. All photos are uploaded by you from the admin panel.</div></li>
+    <li><div><strong>Product Name and Price</strong> — The name in large text and the price in Nigerian Naira (₦) format.</div></li>
+    <li><div><strong>Star Rating</strong> — The average star rating from all customer reviews (out of 5 stars).</div></li>
+    <li><div><strong>Description</strong> — A full description of the product. What it is, how it was raised/grown, why it is good quality. You write this when you create the product, or you can use the AI tool to write it for you.</div></li>
+    <li><div><strong>Nutrition Facts</strong> — If the product has nutrition information (like protein, fat, calories), it is displayed in a neat table. You enter this data when creating the product.</div></li>
+    <li><div><strong>Weight / Unit</strong> — The weight or unit size of the product (e.g., "1 kg", "1 dozen", "1 carton").</div></li>
+    <li><div><strong>Quantity Selector</strong> — The customer can increase or decrease the number they want to buy using + and − buttons.</div></li>
+    <li><div><strong>Add to Cart Button</strong> — The main green button. Clicking it puts the selected quantity into the shopping cart.</div></li>
+    <li><div><strong>Add to Wishlist (Heart Icon)</strong> — If the customer is logged in, they can save the product to their wishlist for later by clicking the heart icon.</div></li>
+    <li><div><strong>Stock Status</strong> — If an item is in stock, it shows "In Stock." If the stock is low (below your warning level), it shows "Only X left!" in yellow to create urgency. If completely out of stock, the Add to Cart button is disabled.</div></li>
+    <li><div><strong>Customer Reviews Section</strong> — Below the product info, all verified customer reviews are shown. Each review has a star rating, the customer's name, the date they left the review, and their written comment. If a customer has never bought the product, they cannot leave a review.</div></li>
+    <li><div><strong>Related Products</strong> — At the very bottom, the website automatically suggests similar products the customer might also want.</div></li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 2.4</div>
+  <div id="cart" class="section-title">The Shopping Cart</div>
+
+  <p>The cart is where a customer stores products they want to buy before they actually pay. Think of it exactly like a real shopping basket in a supermarket — they pick things up, put them in the basket, and then go to the till (checkout) when they are ready.</p>
+
+  <p>Your cart has a very important feature: <strong>it works for both guests and logged-in customers</strong>, and it remembers their items.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <h4>Guest Cart (Not Logged In)</h4>
+      <p>Even if someone has not created an account, they can still add products to the cart. The items are saved in their browser session. If they leave the page, the items stay until they close the browser tab.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <h4>Logged-In Cart</h4>
+      <p>When a customer is logged in, their cart is saved in the database. This means even if they close their laptop and come back a week later, their cart items are still there.</p>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <div class="callout-title">Cart Merge — Smart Feature</div>
+    <p>If a guest adds items to their cart and THEN logs in, the website automatically combines the guest cart with their saved account cart. Nothing is lost. This is completely automatic.</p>
+  </div>
+
+  <p>The cart page itself shows:</p>
+  <ul>
+    <li>Every product in the cart with its photo, name, and price per unit</li>
+    <li>A quantity field for each item — the customer can type a new number or use the +/− buttons</li>
+    <li>A "Remove" button to delete an item from the cart</li>
+    <li>A subtotal for each line (price × quantity)</li>
+    <li>An order summary box showing subtotal, delivery fee, any coupon discount, and the grand total</li>
+    <li>A coupon code field — if the customer has a discount code, they type it here</li>
+    <li>A "Proceed to Checkout" button to go and pay</li>
+  </ul>
+
+  <p>The cart icon in the navigation bar shows a small green number badge that updates in real time as items are added or removed — so the customer always knows how many items they have without opening the cart.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 2.5</div>
+  <div id="checkout" class="section-title">The Checkout Process — Step by Step</div>
+
+  <p>Checkout is the process of actually paying for the items in the cart. The website guides the customer through this in clear steps — they cannot skip ahead and they cannot get confused about what to do next.</p>
+
+  <ol class="steps">
+    <li><div><strong>Step 1 — Delivery Information</strong><br>The customer fills in where they want the order delivered. They enter their full name, phone number, delivery address (street, city, state), and any special delivery instructions. If they have saved addresses from previous orders, they can just select one from a dropdown instead of typing it all again.</div></li>
+    <li><div><strong>Step 2 — Order Review</strong><br>The customer sees a complete summary of everything they are buying: each product, the quantity, the price per item, the subtotal, any delivery fee, any coupon discount, and the final total in Nigerian Naira (₦). This is their last chance to check everything before paying. They can go back and change quantities or remove items.</div></li>
+    <li><div><strong>Step 3 — Payment</strong><br>The customer chooses how they want to pay. There are three options (explained in detail in the next section). Once they click the final "Pay Now" button, the system creates their order with a unique order number in the format <strong>TAK-2025-00001</strong> and processes the payment.</div></li>
+  </ol>
+
+  <div class="callout blue">
+    <div class="callout-title">Order Numbers</div>
+    <p>Every order gets a unique reference number in this exact format: <strong>TAK-YYYY-NNNNN</strong>. For example, <strong>TAK-2025-00047</strong> means the 47th order placed in the year 2025. Both you and the customer can use this number to find the order instantly.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 2.6</div>
+  <div id="payments" class="section-title">Payment Methods — Explained in Full</div>
+
+  <p>Your website accepts three different ways to pay. Each one is explained below in complete detail.</p>
+
+  <h3 style="color: var(--green); font-size: 18px; margin: 28px 0 14px;">Option A — Paystack (Main Payment Method)</h3>
+  <p>Paystack is the most popular payment company in Nigeria. It is trusted by thousands of Nigerian businesses and is completely safe. Your customers can pay with their Nigerian debit card, bank transfer, USSD code, or even mobile money — all through Paystack's secure page.</p>
+
+  <ol class="steps">
+    <li><div><strong>Customer clicks "Pay with Paystack"</strong> — They are taken away from your website and to Paystack's own secure payment page (you will see the padlock icon in the browser and the web address will start with paystack.com).</div></li>
+    <li><div><strong>Customer enters card details</strong> — They type their 16-digit card number, expiry date, and CVV (the 3-digit code on the back of the card). Alternatively, they can choose bank transfer or USSD — Paystack will show them the bank account to transfer to.</div></li>
+    <li><div><strong>Customer enters OTP</strong> — Their bank sends a one-time password (OTP) to their registered phone number. They type this code to authorize the payment.</div></li>
+    <li><div><strong>Paystack processes the payment</strong> — This takes about 3–5 seconds. The customer sees a loading spinner.</div></li>
+    <li><div><strong>Paystack notifies your website</strong> — As soon as the payment goes through, Paystack automatically sends a secret notification (called a "webhook") to your website. This happens in the background, even if the customer closes their browser. Your website receives this notification and immediately marks the order as PAID and CONFIRMED.</div></li>
+    <li><div><strong>Customer is redirected back</strong> — The customer lands on your Order Success page. They see their order number, a summary of what they bought, and a confirmation message.</div></li>
+    <li><div><strong>Confirmation email is sent automatically</strong> — Within seconds, the customer receives an email with their full order receipt, including a PDF invoice attached to the email.</div></li>
+  </ol>
+
+  <div class="callout green">
+    <div class="callout-title">Money Goes Directly to You</div>
+    <p>Money paid via Paystack goes directly to your Paystack business account. From there, you can withdraw it to your bank account at any time through the Paystack dashboard. Your website never holds or stores any money — it just facilitates the transaction.</p>
+  </div>
+
+  <h3 style="color: #29B6F6; font-size: 18px; margin: 28px 0 14px;">Option B — Flutterwave (Alternative Payment)</h3>
+  <p>Flutterwave is another highly trusted Nigerian payment company. It works almost identically to Paystack. The process is the same — the customer is taken to Flutterwave's secure page, they pay, and Flutterwave notifies your website when done. Your website then marks the order as paid and sends the confirmation email.</p>
+
+  <p>Flutterwave supports: debit/credit cards, bank transfers, USSD, mobile money, and even payments from other African countries (Ghana, Kenya, etc.). Having two payment options means if one is having technical problems, customers can always use the other one.</p>
+
+  <h3 style="color: #F5A623; font-size: 18px; margin: 28px 0 14px;">Option C — Cash on Delivery</h3>
+  <p>This option is for customers who prefer to pay in cash when the delivery arrives at their door. They do NOT pay anything online.</p>
+
+  <ol class="steps">
+    <li><div><strong>Customer selects "Pay on Delivery"</strong> — They confirm their order without entering any card details.</div></li>
+    <li><div><strong>Order is created as PENDING / UNPAID</strong> — The system creates the order with payment status "UNPAID." You can see it in your admin panel immediately.</div></li>
+    <li><div><strong>Your team contacts the customer</strong> — You (or your delivery team) call the customer to confirm the order and arrange delivery.</div></li>
+    <li><div><strong>Delivery is made and cash is collected</strong> — Your delivery person collects the cash at the customer's door.</div></li>
+    <li><div><strong>Admin updates the order</strong> — You go into the admin panel, find the order, and manually mark it as PAID and DELIVERED.</div></li>
+  </ol>
+
+  <div class="callout yellow">
+    <div class="callout-title">Cash on Delivery Caution</div>
+    <p>Cash on delivery carries some risk — a customer might order and then not be available when delivery arrives. It is a good idea to call and confirm the order before dispatching your delivery person. You can choose to disable this payment option in your site settings if you prefer card-only payments.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 2.7</div>
+  <div id="order-success" class="section-title">After Payment — What the Customer Sees</div>
+
+  <p>After a successful payment, the customer lands on the <strong>Order Success</strong> page. This page is very important — it reassures the customer that everything went through correctly.</p>
+
+  <p>The Order Success page shows:</p>
+  <ul>
+    <li>A large green checkmark and "Order Confirmed!" message</li>
+    <li>The order number (e.g., TAK-2025-00047) — they should save or screenshot this</li>
+    <li>A summary of what they ordered and the total they paid</li>
+    <li>The delivery address they entered</li>
+    <li>An estimated delivery timeframe</li>
+    <li>A button to "Track Your Order" which takes them to their account order history</li>
+    <li>A button to "Continue Shopping"</li>
+  </ul>
+
+  <p>At the exact same moment, the customer also receives an automatic email to their email address. This email contains their full receipt and a PDF invoice attached — so they have a permanent record. You also receive a copy in your admin panel.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PART 3 — CUSTOMER ACCOUNTS
+══════════════════════════════════════════════════════ -->
+<div id="part3" class="part-header">
+  <div class="part-num">3</div>
+  <div class="part-title">Customer <span>Accounts</span></div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 3.1</div>
+  <div id="register-login" class="section-title">Registering and Logging In</div>
+
+  <p>Customers do not have to create an account to browse your shop or even to check out. However, having an account gives them useful features like order history, saved addresses, and a wishlist. Creating an account is free and takes about 30 seconds.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 20px 0 10px;">Creating a New Account</h3>
+  <ol class="steps">
+    <li><div>Customer clicks <strong>"Sign Up"</strong> or <strong>"Register"</strong> in the navbar.</div></li>
+    <li><div>They fill in their <strong>full name</strong>, <strong>email address</strong>, and a <strong>password</strong> (must be at least 8 characters). They type the password twice to confirm they did not make a typo.</div></li>
+    <li><div>They click the <strong>"Create Account"</strong> button.</div></li>
+    <li><div>The system creates their account instantly and logs them in automatically — no waiting for an email verification.</div></li>
+    <li><div>A <strong>Welcome email</strong> is sent automatically to their email address. This email greets them by name, explains what they can do with their account, and shows your contact details.</div></li>
+  </ol>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 10px;">Logging In (Returning Customers)</h3>
+  <ol class="steps">
+    <li><div>Customer clicks <strong>"Login"</strong> in the navbar.</div></li>
+    <li><div>They type their email address and password.</div></li>
+    <li><div>If they tick <strong>"Remember me"</strong>, the website remembers them for 30 days — they will not need to log in again on that device.</div></li>
+    <li><div>They click <strong>"Log In"</strong> and are taken directly to their account dashboard.</div></li>
+  </ol>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 10px;">Forgot Password</h3>
+  <p>If a customer forgets their password, they click "Forgot your password?" on the login page. They enter their email address and the system sends them a reset link. They click the link in the email, enter a new password, and they are back in. The reset link expires after 60 minutes for security.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 3.2</div>
+  <div id="account-dashboard" class="section-title">The Customer Account Dashboard</div>
+
+  <p>When a customer logs in and goes to "My Account," they land on their personal dashboard. This is like a private control panel just for them. It is completely separate from your admin panel — they can only see their own information.</p>
+
+  <p>The customer dashboard shows:</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h4>Personal Stats</h4>
+      <p>Total orders placed, total money spent with you, how many items are in their wishlist, and how many saved addresses they have.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📦</div>
+      <h4>Recent Orders</h4>
+      <p>Their 3 most recent orders with status badges (PENDING, CONFIRMED, DELIVERED, etc.) and a "View Details" link for each.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h4>Quick Actions</h4>
+      <p>Shortcut buttons to the most useful things: Browse Shop, View All Orders, My Wishlist, and Manage Addresses.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <h4>Profile Summary</h4>
+      <p>Their name, email, and how long they have been a customer. A link to edit their profile and change their password.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 3.3</div>
+  <div id="my-orders" class="section-title">My Orders — Order History and Tracking</div>
+
+  <p>The "My Orders" section shows the customer a complete history of every order they have ever placed with you. This is extremely useful — they can always check the status of an order without calling you.</p>
+
+  <p>For each order, the customer can see:</p>
+  <ul>
+    <li>The order number (TAK-YYYY-NNNNN)</li>
+    <li>The date the order was placed</li>
+    <li>The total amount they paid</li>
+    <li>The current status of the order (explained in a colour-coded badge)</li>
+    <li>A "View Details" button</li>
+  </ul>
+
+  <p>Clicking "View Details" on any order opens the full order page showing:</p>
+  <ul>
+    <li>Every product in the order, quantity, and price</li>
+    <li>The delivery address</li>
+    <li>Payment method used and payment status</li>
+    <li>A full order timeline — a step-by-step history of what happened to this order (e.g., "Order placed," "Confirmed by admin," "Shipped," "Delivered")</li>
+    <li>A button to download the PDF invoice</li>
+  </ul>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Status Badge</th><th>Colour</th><th>What It Means</th></tr></thead>
+      <tbody>
+        <tr><td>PENDING</td><td><span class="badge yellow">Yellow</span></td><td>Order was just placed. Waiting for confirmation from your team.</td></tr>
+        <tr><td>CONFIRMED</td><td><span class="badge blue">Blue</span></td><td>Your team has confirmed the order is valid and will be processed.</td></tr>
+        <tr><td>PROCESSING</td><td><span class="badge blue">Blue</span></td><td>Your team is preparing the items — packing them for delivery.</td></tr>
+        <tr><td>SHIPPED</td><td><span class="badge yellow">Yellow</span></td><td>The order has left your farm / warehouse and is on its way.</td></tr>
+        <tr><td>DELIVERED</td><td><span class="badge green">Green</span></td><td>The order has been delivered successfully to the customer.</td></tr>
+        <tr><td>CANCELLED</td><td><span class="badge red">Red</span></td><td>The order was cancelled (by the customer or by your team).</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 3.4</div>
+  <div id="wishlist" class="section-title">Wishlist</div>
+
+  <p>The wishlist is like a "save for later" list. A logged-in customer can click the heart icon on any product and it gets added to their wishlist. They can come back later to buy it.</p>
+
+  <p>The heart icon appears on product cards in the shop and on the full product page. When a product is already in the wishlist, the heart turns solid (filled in). When they click it again, it is removed from the wishlist.</p>
+
+  <p>In the navigation bar, there is a small heart icon. If the customer has any items in their wishlist, a green number badge appears on this icon showing how many items are saved. Clicking the heart icon in the navbar takes them straight to their full wishlist page.</p>
+
+  <p>On the wishlist page, the customer can:</p>
+  <ul>
+    <li>See all their saved products with photos, names, and current prices</li>
+    <li>Add any wishlist item directly to their cart</li>
+    <li>Remove items from the wishlist they no longer want</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 3.5</div>
+  <div id="addresses" class="section-title">Saved Addresses</div>
+
+  <p>Customers can save their delivery addresses so they do not have to type the full address every time they order. This is especially useful for regular customers.</p>
+
+  <p>A customer can save multiple addresses — for example, their home address and their office address. During checkout, they simply select the address from a dropdown instead of filling in the form.</p>
+
+  <p>To manage addresses, the customer goes to "My Account → Addresses." From there they can:</p>
+  <ul>
+    <li>Add a new address by filling in the address form</li>
+    <li>Edit any existing address (e.g., if they moved)</li>
+    <li>Delete an address they no longer need</li>
+    <li>Set one address as the "Default" — this one is pre-selected automatically at checkout</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 3.6</div>
+  <div id="profile" class="section-title">Profile and Password</div>
+
+  <p>Under "My Account → Profile," a customer can update their personal information.</p>
+
+  <p>What they can change:</p>
+  <ul>
+    <li><strong>Name</strong> — Update their display name (this appears on their reviews and account)</li>
+    <li><strong>Email address</strong> — Change the email they use to log in and receive emails from you</li>
+    <li><strong>Phone number</strong> — Add or update their phone number</li>
+    <li><strong>Profile photo</strong> — Upload a personal photo (shown in their account and in the "New Customers" section of your admin dashboard)</li>
+    <li><strong>Password</strong> — Change their password. They must enter their current password first (for security), then the new password twice.</li>
+  </ul>
+
+  <div class="callout blue">
+    <div class="callout-title">Security Note</div>
+    <p>To change a password, the customer MUST know their current password. This prevents anyone else from changing their password even if they get access to the account temporarily. If they have forgotten their current password, they must use the "Forgot Password" flow instead.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PART 4 — ADMIN PANEL OVERVIEW
+══════════════════════════════════════════════════════ -->
+<div id="part4" class="part-header">
+  <div class="part-num">4</div>
+  <div class="part-title">The <span>Admin Panel</span></div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 4.1</div>
+  <div id="who-is-admin" class="section-title">How to Access the Admin Panel</div>
+
+  <p>The admin panel is your private control room. No customer can ever see it or access it — it is completely locked behind a login system and role check.</p>
+
+  <p>To get to the admin panel:</p>
+  <ol class="steps">
+    <li><div>Open your web browser and go to your website address followed by <strong>/admin</strong>. For example: <strong>yoursite.com/admin</strong></div></li>
+    <li><div>You will see the login page. Type your admin email address and password.</div></li>
+    <li><div>Click <strong>"Log In"</strong>. The system checks your role — if you are not an ADMIN or SUPER_ADMIN, access is denied immediately.</div></li>
+    <li><div>If approved, you land on the Admin Dashboard.</div></li>
+  </ol>
+
+  <div class="callout red">
+    <div class="callout-title">Never Share Your Admin Password</div>
+    <p>Your admin login is the "master key" to your entire business data. Never share it. If a staff member needs access, create them a separate account with the appropriate role — do not share your own login credentials.</p>
+  </div>
+
+  <p>The admin panel has a dark-themed sidebar on the left side of the screen. This sidebar contains links to every section of the admin panel, organized into groups. At the top of the sidebar, you can see your name and role badge. The sidebar is always visible while you work, making it easy to jump between sections.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 4.2</div>
+  <div id="admin-dashboard" class="section-title">The Admin Dashboard — Understanding Every Number</div>
+
+  <p>When you first log into the admin panel, you land on the Dashboard. This page gives you a live snapshot of how your business is performing right now. Everything on this page updates automatically — you do not need to refresh it manually.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 20px 0 12px;">The 4 KPI Cards (Top Row)</h3>
+  <p>KPI stands for "Key Performance Indicator" — these are the most important numbers in your business. The four cards at the top of the dashboard show:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Card</th><th>What It Shows</th><th>What It Means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Monthly Revenue</td>
+          <td>Total ₦ earned this month + % change vs last month</td>
+          <td>How much money came in from orders this month. The percentage shows if you are doing better or worse than last month. Green = better, Red = worse.</td>
+        </tr>
+        <tr>
+          <td>Orders This Month</td>
+          <td>Number of orders + total all-time orders</td>
+          <td>How many orders were placed this month. The sub-text shows the lifetime total since you launched the website.</td>
+        </tr>
+        <tr>
+          <td>New Customers</td>
+          <td>How many new accounts were created this month</td>
+          <td>Tells you if your marketing is working — are new people discovering and joining your shop?</td>
+        </tr>
+        <tr>
+          <td>Active Products</td>
+          <td>How many products are currently visible in the shop + low stock count</td>
+          <td>How many products customers can currently buy. If any products have low stock, the count is shown in yellow as a warning.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 12px;">Revenue Chart (Bar Chart)</h3>
+  <p>Below the KPI cards is a bar chart showing your revenue for the last 12 months. Each bar represents one month. The taller the bar, the more money you earned that month. You can hover your mouse over any bar to see the exact Naira amount for that month. This helps you spot seasonal patterns — for example, if your sales spike around Christmas or the farming season.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 12px;">Order Status Breakdown</h3>
+  <p>Next to the chart is a breakdown showing how many orders are in each status (PENDING, CONFIRMED, DELIVERED, CANCELLED, etc.) with progress bars showing the percentage. This tells you at a glance if there are too many PENDING orders piling up that need your attention.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 12px;">Top Products</h3>
+  <p>This section shows your 5 best-selling products by revenue — which products have made you the most money. Each product is numbered, shows the units sold, and the total revenue it has generated. Use this to know which products to keep in stock and promote more.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 12px;">Low Stock Alert</h3>
+  <p>If any of your products are running low on stock (below the warning threshold — default is 10 units), they appear here with the exact number remaining in yellow text. This is your early warning system so you never accidentally sell out of something and have to cancel customer orders.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 12px;">New Customers</h3>
+  <p>The latest customers who created accounts are shown here with their profile photo and how long ago they joined. A quick way to see who is new to your shop.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 12px;">Recent Orders Table</h3>
+  <p>At the bottom of the dashboard is a table showing the 10 most recent orders. For each order you can see the order number, customer name, total amount, payment status, order status, and a "View" link that takes you directly to the full order detail. This means you can act on new orders without even leaving the dashboard.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PART 5 — MANAGING PRODUCTS
+══════════════════════════════════════════════════════ -->
+<div id="part5" class="part-header">
+  <div class="part-num">5</div>
+  <div class="part-title">Managing <span>Products</span></div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 5.1</div>
+  <div id="add-product" class="section-title">Adding a New Product</div>
+
+  <p>Every product you sell on your website must be added through the admin panel. Nothing appears on the website automatically — you are in full control of what customers can see and buy.</p>
+
+  <p>To add a new product, go to <strong>Admin → Products → Add New Product</strong>. You will see a form to fill in. Here is every field explained:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Field</th><th>What to Enter</th><th>Required?</th></tr></thead>
+      <tbody>
+        <tr><td>Product Name</td><td>The name of the product, e.g., "Free-Range Broiler Chicken" or "Table Eggs (1 Crate)"</td><td>Yes</td></tr>
+        <tr><td>Category</td><td>Choose from your existing categories (Poultry, Eggs, etc.)</td><td>Yes</td></tr>
+        <tr><td>Price</td><td>The selling price in Nigerian Naira (₦). Do not type ₦ — just the number, e.g., 3500</td><td>Yes</td></tr>
+        <tr><td>Compare-at Price</td><td>The original price before a discount. If you put 4000 here and 3000 as the price, the website shows a strikethrough ₦4,000 and the sale price ₦3,000.</td><td>No</td></tr>
+        <tr><td>Stock Quantity</td><td>How many units you currently have available to sell</td><td>Yes</td></tr>
+        <tr><td>Low Stock Threshold</td><td>The number at which you want to be warned the stock is getting low. Default is 10.</td><td>No</td></tr>
+        <tr><td>Weight / Unit</td><td>The unit of measurement, e.g., "1 kg", "1 dozen", "2.5 kg", "1 crate"</td><td>No</td></tr>
+        <tr><td>Short Description</td><td>A brief one-sentence summary shown on the product card in the shop</td><td>No</td></tr>
+        <tr><td>Full Description</td><td>The complete detailed description shown on the product page. Can include all the details about how it is farmed, quality, freshness, etc.</td><td>Yes</td></tr>
+        <tr><td>Tags</td><td>Keywords to help with searching, e.g., "organic, poultry, protein". Separate with commas.</td><td>No</td></tr>
+        <tr><td>Slug</td><td>The URL-friendly version of the name (auto-generated — you don't need to fill this in)</td><td>Auto</td></tr>
+        <tr><td>Status</td><td>Active = visible to customers. Draft = hidden (only you can see it while preparing). Inactive = removed from shop.</td><td>Yes</td></tr>
+        <tr><td>Featured</td><td>Tick this to show this product on the homepage Featured Products section</td><td>No</td></tr>
+        <tr><td>Nutrition Facts</td><td>A table of nutritional values (calories, protein, fat, carbohydrates, etc.). Fill in any values that are relevant to this product.</td><td>No</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>After filling in the form, click <strong>"Save Product."</strong> The product is immediately live on your website (if status is Active). You can then add photos to it.</p>
+
+  <div class="callout blue">
+    <div class="callout-title">Use AI to Write Product Descriptions</div>
+    <p>On the product form, there is an <strong>"Generate with AI"</strong> button next to the description field. Click it, and the AI assistant will automatically write a professional product description for you based on the product name and category. This saves you a lot of writing time. You can edit the AI-generated text after it appears.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 5.2</div>
+  <div id="product-images" class="section-title">Adding Product Photos</div>
+
+  <p>Photos are extremely important — customers cannot touch or smell the product online, so good photos are how they judge quality. You can upload multiple photos per product.</p>
+
+  <ol class="steps">
+    <li><div>After saving the product, you are taken to the product's edit page (or you can find any product under Admin → Products and click "Edit").</div></li>
+    <li><div>Scroll to the <strong>"Product Images"</strong> section. You will see an upload area.</div></li>
+    <li><div>Click the upload area or drag your photo files onto it. You can select multiple photos at once.</div></li>
+    <li><div>The photos upload automatically and appear as thumbnails on the page.</div></li>
+    <li><div>You can drag the thumbnails to reorder them — the first photo is the "main photo" that customers see first.</div></li>
+    <li><div>To remove a photo, click the X button on its thumbnail.</div></li>
+  </ol>
+
+  <div class="highlight">
+    <h4>Photo Tips</h4>
+    <ul>
+      <li>Use good lighting — natural daylight photos look best</li>
+      <li>Show the product from multiple angles</li>
+      <li>Include a photo with a scale reference so customers understand the size</li>
+      <li>Minimum recommended photo size: 800×800 pixels</li>
+      <li>The website automatically compresses and resizes photos — you do not need to edit them before uploading</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 5.3</div>
+  <div id="edit-product" class="section-title">Editing and Deleting Products</div>
+
+  <p>To see all your products, go to <strong>Admin → Products</strong>. You will see a table with all products, their current price, stock level, status, and action buttons.</p>
+
+  <p>To <strong>edit a product</strong> (change the price, update the description, change the stock level, etc.):</p>
+  <ol class="steps">
+    <li><div>Find the product in the list. You can search by name or filter by category.</div></li>
+    <li><div>Click the <strong>"Edit"</strong> button (pencil icon) on that product's row.</div></li>
+    <li><div>The same form you used to create the product opens, pre-filled with all the current values.</div></li>
+    <li><div>Change whatever you need to change.</div></li>
+    <li><div>Click <strong>"Update Product."</strong> The changes appear on your website immediately.</div></li>
+  </ol>
+
+  <p>To <strong>delete a product</strong>:</p>
+  <ul>
+    <li>Click the red <strong>"Delete"</strong> button on the product row.</li>
+    <li>A confirmation box appears asking "Are you sure?" — click Yes to permanently delete it.</li>
+    <li>Deleted products cannot be recovered. If you just want to hide a product temporarily, set its status to "Draft" or "Inactive" instead of deleting it.</li>
+  </ul>
+
+  <div class="callout yellow">
+    <div class="callout-title">Think Before Deleting</div>
+    <p>If you delete a product that has existing orders, those orders will still show the product name in their history (the order history is preserved). But the product will no longer be searchable or shoppable on your website. If you are unsure, set the product to "Inactive" status instead — it disappears from the shop but all your historical data stays intact.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 5.4</div>
+  <div id="categories" class="section-title">Managing Categories</div>
+
+  <p>Categories are the groups that your products are organized into. Go to <strong>Admin → Categories</strong> to manage them.</p>
+
+  <p>You can:</p>
+  <ul>
+    <li><strong>Add a new category</strong> — Give it a name and optionally a description and an icon. Example: "Poultry" with a chicken emoji as the icon.</li>
+    <li><strong>Edit a category</strong> — Change the name or description.</li>
+    <li><strong>Delete a category</strong> — Only if no products are assigned to it. You cannot delete a category that still has products in it — you must move those products to another category first.</li>
+    <li><strong>Reorder categories</strong> — Drag categories to change the order they appear in the shop filter.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 5.5</div>
+  <div id="inventory" class="section-title">Inventory Management — Tracking Stock</div>
+
+  <p>The Inventory section (Admin → Inventory) gives you a dedicated view of all your products' stock levels in one place. This is separate from the product edit page — it is designed specifically for quickly updating stock numbers without having to open each product individually.</p>
+
+  <p>The inventory list shows:</p>
+  <ul>
+    <li>Product name</li>
+    <li>Current stock quantity</li>
+    <li>Low stock threshold for that product</li>
+    <li>A status badge: "In Stock," "Low Stock," or "Out of Stock"</li>
+    <li>A quick-edit field to type a new stock number and save instantly</li>
+  </ul>
+
+  <p>Products that are low on stock are highlighted in yellow. Products that are completely out of stock are highlighted in red and are automatically hidden from the shop (customers cannot add them to cart).</p>
+
+  <div class="callout green">
+    <div class="callout-title">Set Realistic Thresholds</div>
+    <p>The low stock threshold tells the system when to warn you. If a product typically sells 5 units per day and delivery from your supplier takes 3 days, set the threshold to at least 15. This way you get a warning before you actually run out, giving you time to restock.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PART 6 — MANAGING ORDERS
+══════════════════════════════════════════════════════ -->
+<div id="part6" class="part-header">
+  <div class="part-num">6</div>
+  <div class="part-title">Managing <span>Orders</span></div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 6.1</div>
+  <div id="orders-list" class="section-title">The Orders List</div>
+
+  <p>Every order placed on your website — by any customer, through any payment method — appears in <strong>Admin → Orders</strong>. This is your central order management hub.</p>
+
+  <p>The orders list shows a table with columns for:</p>
+  <ul>
+    <li><strong>Order Number</strong> — The TAK-YYYY-NNNNN reference code</li>
+    <li><strong>Customer</strong> — The name of the person who ordered</li>
+    <li><strong>Total</strong> — How much the order is worth in ₦</li>
+    <li><strong>Payment Status</strong> — PAID (green) or UNPAID (yellow)</li>
+    <li><strong>Order Status</strong> — PENDING, CONFIRMED, PROCESSING, SHIPPED, DELIVERED, or CANCELLED</li>
+    <li><strong>Date</strong> — When the order was placed</li>
+    <li><strong>View button</strong> — Takes you to the full order detail</li>
+  </ul>
+
+  <p>You can also <strong>filter orders</strong> by status, by date range, or by payment status — making it easy to find, for example, "all orders that are PENDING payment" or "all orders from this week."</p>
+
+  <p>You can <strong>search</strong> by order number or customer name to find a specific order instantly.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 6.2</div>
+  <div id="order-detail" class="section-title">The Order Detail Page</div>
+
+  <p>Clicking "View" on any order takes you to the full order detail page. This is the most comprehensive view of a single order. Here is everything you can see:</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <h4>Order Summary</h4>
+      <p>Order number, date placed, payment method, payment status, and the current order status with a colour-coded badge.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <h4>Customer Details</h4>
+      <p>Customer name, email address, phone number, and a link to view their full customer profile.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <h4>Delivery Address</h4>
+      <p>The exact address the customer entered for delivery: street, city, state, and any special instructions.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛒</div>
+      <h4>Items Ordered</h4>
+      <p>A table listing every product the customer ordered, the quantity, price per unit, and the subtotal for each line.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💰</div>
+      <h4>Financials</h4>
+      <p>Subtotal, delivery fee, coupon discount (if any), and the grand total. Clearly shows how the final amount was calculated.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🕐</div>
+      <h4>Order Timeline</h4>
+      <p>A chronological log of everything that happened to this order: when it was placed, when it was confirmed, when it was shipped, etc.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 6.3</div>
+  <div id="order-status" class="section-title">Changing an Order's Status</div>
+
+  <p>As your team processes an order, you update its status in the admin panel. This keeps the customer informed and keeps your records accurate.</p>
+
+  <p>On the order detail page, there is a <strong>"Update Status"</strong> section. It shows a dropdown where you select the new status. Below it, there is an optional "Note" field where you can add a message — for example, "Your order is packed and will be dispatched tomorrow morning."</p>
+
+  <p>Click <strong>"Update."</strong> Two things happen instantly:</p>
+  <ol>
+    <li>The order status changes in the system</li>
+    <li>A new entry is added to the order timeline log (so both you and the customer can see the history)</li>
+  </ol>
+
+  <p>The typical flow for a paid online order is:</p>
+  <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 16px 0; font-size: 13px;">
+    <span class="badge yellow">PENDING</span>
+    <span style="color: var(--muted)">→</span>
+    <span class="badge blue">CONFIRMED</span>
+    <span style="color: var(--muted)">→</span>
+    <span class="badge blue">PROCESSING</span>
+    <span style="color: var(--muted)">→</span>
+    <span class="badge yellow">SHIPPED</span>
+    <span style="color: var(--muted)">→</span>
+    <span class="badge green">DELIVERED</span>
+  </div>
+
+  <div class="callout yellow">
+    <div class="callout-title">Cancellation</div>
+    <p>You can also set an order to CANCELLED at any stage. If the order was already paid, you will need to process a refund manually through your Paystack or Flutterwave dashboard. The website does not automatically refund money — that is done on the payment provider's side.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 6.4</div>
+  <div id="invoices" class="section-title">Invoices and PDF Documents</div>
+
+  <p>Every order automatically has a PDF invoice that can be downloaded. An invoice is a formal document showing the order details, items purchased, total amount, and your business information. It serves as an official receipt.</p>
+
+  <p>There are three ways to access an order's PDF invoice:</p>
+  <ul>
+    <li><strong>Admin downloads it</strong> — On the order detail page in the admin panel, click the "Download Invoice" button.</li>
+    <li><strong>Customer downloads it</strong> — On the customer's "My Orders" page, they can download their invoice for any paid order.</li>
+    <li><strong>Automatic email attachment</strong> — When an order is confirmed (payment received), the system automatically sends a confirmation email to the customer with the PDF invoice attached. They receive it without having to ask for it.</li>
+  </ul>
+
+  <p>The PDF invoice includes: Your business name and address, the customer's name and delivery address, the order number, date, a table of all items with quantities and prices, the total, and your contact information.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PART 7 — PEOPLE
+══════════════════════════════════════════════════════ -->
+<div id="part7" class="part-header">
+  <div class="part-num">7</div>
+  <div class="part-title">Customers, Staff <span>&amp; Workers</span></div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 7.1</div>
+  <div id="customers-admin" class="section-title">The Customer List</div>
+
+  <p>Go to <strong>Admin → Customers</strong> to see a list of every person who has created a shopping account on your website. These are your online shoppers — people who have registered to buy from you.</p>
+
+  <p>The customer list shows:</p>
+  <ul>
+    <li>Customer name and profile photo</li>
+    <li>Email address</li>
+    <li>Phone number (if they added it)</li>
+    <li>Date they joined</li>
+    <li>Total number of orders they have placed</li>
+    <li>Total money they have spent with you</li>
+    <li>A "View" button to see their full profile</li>
+  </ul>
+
+  <p>Clicking "View" on a customer shows you their complete profile: all their orders, all their saved addresses, their wishlist, and their account activity. This is very useful for customer service — if a customer calls with a question about an order, you can look up their full history instantly.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 7.2</div>
+  <div id="staff-management" class="section-title">Staff / Admin Users</div>
+
+  <p>Go to <strong>Admin → Users</strong> to manage the people who have access to your admin panel — your staff members and managers.</p>
+
+  <div class="callout blue">
+    <div class="callout-title">Important Distinction</div>
+    <p>Admin → Users shows ONLY staff (people with admin roles). Admin → Customers shows ONLY shoppers. These are two separate lists so they do not get mixed up.</p>
+  </div>
+
+  <p>From the Users page, you can:</p>
+  <ul>
+    <li><strong>View all staff accounts</strong> — See all admins, managers, and sales staff</li>
+    <li><strong>Create a new staff account</strong> — Add a new team member with their name, email, and a temporary password. Assign them the right role (ADMIN, MANAGER, or SALES).</li>
+    <li><strong>Change someone's role</strong> — Promote a staff member or restrict their access</li>
+    <li><strong>Disable an account</strong> — If someone leaves the company, deactivate their account so they can no longer log in</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 7.3</div>
+  <div id="workers" class="section-title">Farm Workers — The Worker Management System</div>
+
+  <p>Your website has a complete Farm Worker Management system. This is separate from the online shop — it is for managing the people who physically work on your farm. These are NOT customers who shop online — they are your employees.</p>
+
+  <p>Go to <strong>Admin → Workers</strong> to manage farm workers.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 20px 0 10px;">Adding a New Worker</h3>
+  <p>When you hire someone new, you add them to the system. The form asks for:</p>
+  <ul>
+    <li><strong>Full Name</strong> — The worker's complete name</li>
+    <li><strong>Phone Number</strong> — Their contact number</li>
+    <li><strong>Email Address</strong> — Optional, but if provided, the system automatically sends them a <strong>Welcome Email</strong> when you save their record. The email greets them, confirms their details, and includes your farm's contact information.</li>
+    <li><strong>Job Title / Role</strong> — Their position on the farm (e.g., Farm Hand, Driver, Supervisor)</li>
+    <li><strong>Daily/Monthly Pay Rate</strong> — Their agreed salary amount</li>
+    <li><strong>Start Date</strong> — When they started working</li>
+    <li><strong>Status</strong> — Active or Inactive (set to Inactive if they leave)</li>
+  </ul>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 10px;">Worker Profiles</h3>
+  <p>Each worker has a profile page showing all their information, their full payment history (every salary payment ever made), and any notes.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 10px;">Attendance Tracking</h3>
+  <p>You can log attendance — mark which workers showed up each day. This integrates with the payroll system so salary calculations can account for days worked versus days absent.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PART 8 — FINANCIAL SYSTEM
+══════════════════════════════════════════════════════ -->
+<div id="part8" class="part-header">
+  <div class="part-num">8</div>
+  <div class="part-title">The <span>Financial System</span></div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 8.1</div>
+  <div id="wallet" class="section-title">The Business Wallet — Your Money Tracker</div>
+
+  <p>The Financial System is one of the most powerful features of your admin panel. It is a complete internal accounting system — like a digital ledger — that tracks all money going in and out of your business.</p>
+
+  <p>Go to <strong>Admin → Finance → Wallet</strong> to see the business wallet. The wallet shows:</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">💰</div>
+      <h4>Current Balance</h4>
+      <p>The running total of your business funds tracked in this system. Every income recorded increases it. Every expense decreases it.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h4>Total Income</h4>
+      <p>The sum of all money recorded as coming into the business — order payments, capital deposits, etc.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📉</div>
+      <h4>Total Expenses</h4>
+      <p>The sum of all money recorded as going out — salaries paid, operational costs, purchases, etc.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <h4>Transaction Ledger</h4>
+      <p>A complete list of every single financial transaction in reverse chronological order (newest first). Each entry shows the date, description, amount, type (income/expense), and who recorded it.</p>
+    </div>
+  </div>
+
+  <div class="callout yellow">
+    <div class="callout-title">This Is a Recording Tool, Not a Bank Account</div>
+    <p>The wallet is a <strong>record-keeping system</strong>. It does not hold actual money. You manually record transactions as they happen in real life. Think of it like writing in a ledger book — except it is digital, automatically calculates totals, and every entry is saved permanently.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 8.2</div>
+  <div id="expenses" class="section-title">Expense Management — The Approval Workflow</div>
+
+  <p>The expense system has a structured workflow with role-based controls. This prevents any single person from spending business money without proper oversight.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 20px 0 12px;">How the Expense Approval Workflow Works</h3>
+
+  <ol class="steps">
+    <li><div><strong>Manager Submits an Expense Request</strong><br>A MANAGER goes to Admin → Finance → Expenses and clicks "New Expense Request." They fill in the description (what the money is for), the amount, the category (e.g., Feed Purchase, Transport, Utilities), and optionally upload a receipt photo. They submit the request.<br><br>The moment they submit, an <strong>automatic email is sent to all ADMIN and SUPER_ADMIN users</strong> alerting them that a new expense request is waiting for approval.</div></li>
+    <li><div><strong>Admin Reviews the Request</strong><br>You (or another admin) log into the admin panel and see the pending expense request under Admin → Finance → Expenses → Pending. You can see all the details the manager submitted, including any receipt they uploaded.</div></li>
+    <li><div><strong>Admin Approves or Rejects</strong><br>You click either <strong>"Approve"</strong> or <strong>"Reject"</strong>. If rejecting, you can type a reason.<br><br>The moment you decide, an <strong>automatic email is sent to the manager</strong> telling them their request was approved or rejected — and if rejected, the reason you gave.</div></li>
+    <li><div><strong>Approved Expense is Recorded</strong><br>If approved, the expense is automatically added to the financial ledger, reducing the wallet balance by that amount. The transaction appears in the full ledger with a note showing it was approved by you.</div></li>
+  </ol>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 28px 0 12px;">Direct Expenses (Admin Only)</h3>
+
+  <p>ADMIN and SUPER_ADMIN can also record expenses directly — without going through the approval process. This is for situations where you yourself are making a business purchase and you want to record it immediately.</p>
+
+  <p>When a manager records a <strong>direct expense</strong> (if they have been granted that permission), an automatic email is sent to all admins alerting them of the direct expense — so there is always transparency even without a formal approval step.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 28px 0 12px;">Receipts — Securely Stored</h3>
+
+  <p>When uploading a receipt photo with an expense, the photo is stored in a <strong>private, secure area</strong> of the server — it is NOT publicly accessible on the internet. Only logged-in admins and managers (who are permitted) can view the receipts. This protects sensitive financial documents from being seen by the public or by hackers.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 8.3</div>
+  <div id="payroll" class="section-title">Payroll — Paying Your Farm Workers</div>
+
+  <p>The payroll system lets you record salary payments to your farm workers. Go to <strong>Admin → Finance → Payroll</strong>.</p>
+
+  <p>The payroll page shows:</p>
+  <ul>
+    <li>A list of all your active workers with their name, role, and pay rate</li>
+    <li>For each worker, a "Pay Salary" button</li>
+    <li>A payment history showing every salary payment ever made</li>
+  </ul>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 20px 0 10px;">How to Pay a Worker's Salary</h3>
+  <ol class="steps">
+    <li><div>Click <strong>"Pay Salary"</strong> next to the worker's name.</div></li>
+    <li><div>A form appears. Enter the <strong>amount</strong> being paid (you can pay the full monthly salary or a partial amount), the <strong>pay period</strong> (e.g., "May 2025"), and any <strong>notes</strong> (e.g., "Includes ₦5,000 transport bonus").</div></li>
+    <li><div>Click <strong>"Confirm Payment."</strong></div></li>
+    <li><div>The system records the payment in the financial ledger (reducing the wallet balance), adds it to the worker's payment history, and if the worker has an email address, <strong>automatically sends them a salary payment notification email</strong> confirming how much was paid and for which period.</div></li>
+  </ol>
+
+  <div class="callout green">
+    <div class="callout-title">Worker Salary Email</div>
+    <p>The automatic salary email sent to the worker confirms the payment amount, the pay period, and your business's contact information. This gives workers a digital record of their salary payment — professional and transparent.</p>
+  </div>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 10px;">Payment History</h3>
+  <p>Every salary payment is permanently recorded. You can view the complete payment history for any individual worker — every payment, every date, every amount. You can also view the total payroll for any given month across all workers. This makes it easy to report to your accountant or for tax purposes.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 8.4</div>
+  <div id="financial-reports" class="section-title">Financial Reports and Summaries</div>
+
+  <p>Under Admin → Finance, you can view financial summaries and reports. These give you a clear picture of your business finances:</p>
+
+  <ul>
+    <li><strong>Income vs Expense Chart</strong> — A visual comparison of money in versus money out per month</li>
+    <li><strong>Expense by Category</strong> — How much was spent on each category (feed, wages, transport, utilities, etc.) — useful for spotting where money is going</li>
+    <li><strong>Payroll Summary</strong> — Total salary paid per month across all workers</li>
+    <li><strong>Full Transaction Export</strong> — Download all transactions as an Excel file for your accountant</li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PART 9 — COMMUNICATIONS
+══════════════════════════════════════════════════════ -->
+<div id="part9" class="part-header">
+  <div class="part-num">9</div>
+  <div class="part-title">Emails &amp; <span>Communications</span></div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 9.1</div>
+  <div id="auto-emails" class="section-title">Automatic Emails — What Gets Sent and When</div>
+
+  <p>Your website sends many emails automatically — no one has to manually do anything. These emails are triggered by events that happen on the website. Here is every automatic email explained:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Trigger</th><th>Who Receives It</th><th>What the Email Says</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Customer creates a new account</td>
+          <td>The customer</td>
+          <td>Welcome email — greets them by name, explains their account features, shows your contact details.</td>
+        </tr>
+        <tr>
+          <td>Customer places an order and pays online</td>
+          <td>The customer</td>
+          <td>Order confirmation — full receipt with all items, total, delivery address, and a PDF invoice attached.</td>
+        </tr>
+        <tr>
+          <td>Admin changes order status to SHIPPED</td>
+          <td>The customer</td>
+          <td>Dispatch notification — tells the customer their order is on the way.</td>
+        </tr>
+        <tr>
+          <td>Admin changes order status to DELIVERED</td>
+          <td>The customer</td>
+          <td>Delivery confirmation — tells the customer their order has been delivered and invites them to leave a review.</td>
+        </tr>
+        <tr>
+          <td>Admin publishes a new product</td>
+          <td>All newsletter subscribers and registered customers</td>
+          <td>New product alert — shows the new product with a photo, description, and a "Shop Now" button linking to the product page.</td>
+        </tr>
+        <tr>
+          <td>Manager submits an expense request</td>
+          <td>All ADMIN and SUPER_ADMIN users</td>
+          <td>Expense request alert — shows the manager's name, the amount, the category, and a link to review it in the admin panel.</td>
+        </tr>
+        <tr>
+          <td>Admin approves an expense request</td>
+          <td>The manager who submitted it</td>
+          <td>Approval notification — tells them the request was approved, shows the amount and approved-by name.</td>
+        </tr>
+        <tr>
+          <td>Admin rejects an expense request</td>
+          <td>The manager who submitted it</td>
+          <td>Rejection notification — tells them it was rejected and shows the reason you gave.</td>
+        </tr>
+        <tr>
+          <td>Manager records a direct expense</td>
+          <td>All ADMIN and SUPER_ADMIN users</td>
+          <td>Direct expense alert — notifies admins of the expense so they are always aware of spending.</td>
+        </tr>
+        <tr>
+          <td>Admin pays a worker's salary</td>
+          <td>The worker (if they have an email)</td>
+          <td>Salary payment notification — confirms the amount paid, the pay period, and thanks them.</td>
+        </tr>
+        <tr>
+          <td>New worker is added to the system</td>
+          <td>The worker (if they have an email)</td>
+          <td>Welcome email — greets them, confirms their details on record, and shows farm contact information.</td>
+        </tr>
+        <tr>
+          <td>Customer requests a password reset</td>
+          <td>The customer</td>
+          <td>Password reset link — a secure link that expires in 60 minutes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout green">
+    <div class="callout-title">All Emails Are Branded</div>
+    <p>Every email sent by your website uses your business name and colour scheme. They look professional and consistently represent T-Akomz Agro Estates. Customers and workers receive emails that feel like they came directly from you.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 9.2</div>
+  <div id="mail-broadcast" class="section-title">Broadcast Emails — Sending Messages to Groups</div>
+
+  <p>Beyond automatic emails, you can manually send a composed email to any group of people directly from your admin panel. This is useful for announcements, promotions, newsletters, or important notices.</p>
+
+  <p>There are two broadcast email tools:</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 20px 0 10px;">Mail Workers / Staff (Admin → Communications → Mail Workers)</h3>
+  <p>Send an email to your farm workers and/or admin staff members. You choose who to send to:</p>
+  <ul>
+    <li><strong>All Workers</strong> — Every active farm worker who has an email address on record</li>
+    <li><strong>All Staff</strong> — Every admin, manager, and sales user</li>
+    <li><strong>A Specific Worker</strong> — Select one individual worker from a dropdown</li>
+    <li><strong>A Specific Staff Member</strong> — Select one staff member from a dropdown</li>
+  </ul>
+  <p>You type the <strong>Subject</strong> (the email's title) and the <strong>Body</strong> (the main message). Then click "Send." The emails go out immediately. You will see a confirmation message telling you how many emails were sent successfully.</p>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 24px 0 10px;">Mail Customers (Admin → Communications → Mail Customers)</h3>
+  <p>Send an email to your shoppers. You choose:</p>
+  <ul>
+    <li><strong>All Customers</strong> — Every single registered customer gets the email</li>
+    <li><strong>Selected Customers</strong> — You see a searchable dropdown showing all customers in alphabetical order. You can select one or more specific people to email.</li>
+  </ul>
+  <p>Type the Subject and Body, click "Send." Done. Each customer receives a personal email addressed to them by name.</p>
+
+  <div class="callout yellow">
+    <div class="callout-title">Use This Feature Responsibly</div>
+    <p>Only send emails when you have something genuinely valuable to say. If you email customers too often with irrelevant messages, they will mark your emails as spam, which can damage your ability to send emails in the future. Good uses: New product launches, seasonal promotions, important notices, thank-you messages.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 9.3</div>
+  <div id="sms" class="section-title">SMS Notifications</div>
+
+  <p>In addition to emails, your website can also send SMS text messages directly to customers' mobile phones. This uses a Nigerian SMS service called <strong>Termii</strong> and is configured with your business name as the sender ID (so customers receive messages from "TAKOMZ" not a random number).</p>
+
+  <p>SMS messages are sent for key order updates — for example when an order is confirmed, dispatched, or delivered. Not every customer will want SMS, but for those with Nigerian phone numbers, this is an additional assurance that their order is being handled.</p>
+
+  <div class="callout blue">
+    <div class="callout-title">SMS Setup</div>
+    <p>SMS requires a valid Termii API key configured in your environment settings. If SMS is not set up, the system falls back gracefully — emails still send normally, just no SMS. Contact your web developer to configure the Termii integration if it is not already active.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PART 10 — OTHER ADMIN TOOLS
+══════════════════════════════════════════════════════ -->
+<div id="part10" class="part-header">
+  <div class="part-num">10</div>
+  <div class="part-title">Other <span>Admin Tools</span></div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 10.1</div>
+  <div id="blog" class="section-title">The Blog / News Section</div>
+
+  <p>Your website has a full blog system. You can write and publish articles that appear in the "News &amp; Blog" section of your public website. A blog is important for several reasons:</p>
+  <ul>
+    <li>It helps your website appear higher in Google search results (SEO — Search Engine Optimization)</li>
+    <li>It positions your business as an expert in agriculture</li>
+    <li>It gives customers useful information about farming, nutrition, and food quality</li>
+    <li>It gives people a reason to keep visiting your website even when they are not buying</li>
+  </ul>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 20px 0 10px;">Writing a Blog Post</h3>
+  <p>Go to <strong>Admin → Blog → New Post</strong>. Fill in:</p>
+  <ul>
+    <li><strong>Title</strong> — The headline of the article, e.g., "Why Free-Range Chicken is Better for Your Health"</li>
+    <li><strong>Category</strong> — The topic category (e.g., Farming Tips, Nutrition, Company News)</li>
+    <li><strong>Featured Image</strong> — A photo that appears as the article's cover image</li>
+    <li><strong>Content</strong> — The full article body with a rich text editor (you can use bold, italic, headings, bullet points, etc.)</li>
+    <li><strong>Excerpt</strong> — A short 2-3 sentence summary shown on the blog listing page</li>
+    <li><strong>Status</strong> — Draft (only you see it) or Published (visible to everyone)</li>
+    <li><strong>Tags</strong> — Keywords for the article</li>
+  </ul>
+
+  <div class="callout blue">
+    <div class="callout-title">AI Can Write Blog Posts Too</div>
+    <p>Just like with product descriptions, there is an AI tool that can write a full blog article for you. Go to Admin → AI Tools → Generate Blog Post. Give it a topic (e.g., "Benefits of eating organic eggs") and it will write a complete article that you can review, edit if needed, and publish.</p>
+  </div>
+
+  <p>Once published, blog posts automatically appear in the Blog section of your website. The URL is neat and readable — for example: yoursite.com/blog/why-free-range-chicken-is-better-for-health.</p>
+
+  <p>Once a blog post is published, its URL never changes (the slug is preserved even if you edit the title). This means any links that people have shared to your articles will always work.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 10.2</div>
+  <div id="settings" class="section-title">Site Settings — Your Business Information</div>
+
+  <p>Go to <strong>Admin → Settings</strong> to manage general information about your business that appears across the website. Only SUPER_ADMIN can access this section.</p>
+
+  <p>Settings you can change:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Setting</th><th>What It Does</th></tr></thead>
+      <tbody>
+        <tr><td>Business Name</td><td>The official name shown in emails, invoices, and the website footer.</td></tr>
+        <tr><td>Business Address</td><td>Your physical address (Oke-Ido Road, Ido Ekiti, Ekiti State). Shown in the footer and on invoices.</td></tr>
+        <tr><td>Phone Number</td><td>Your contact number shown on the website and in emails.</td></tr>
+        <tr><td>Email Address</td><td>The business email shown publicly (for customer contact).</td></tr>
+        <tr><td>WhatsApp Number</td><td>If you use WhatsApp for customer service, this number is linked to the WhatsApp button on the website.</td></tr>
+        <tr><td>Homepage Banner Text</td><td>The headline text on your homepage hero section — the big text customers see first.</td></tr>
+        <tr><td>Paystack Public Key</td><td>Your Paystack payment gateway key (public key only — safe to store here).</td></tr>
+        <tr><td>Flutterwave Public Key</td><td>Your Flutterwave payment gateway key (public key only).</td></tr>
+        <tr><td>Delivery Fee</td><td>A standard delivery fee added to every order automatically during checkout.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout red">
+    <div class="callout-title">Keep Secret Keys Private</div>
+    <p>Payment gateway SECRET keys (not public keys) are stored separately in the server configuration and are NOT editable from the Settings page. This is intentional for security — secret keys must never be shown or stored in a web form. Only your web developer should change these.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 10.3</div>
+  <div id="ai-tools" class="section-title">AI Assistant Tools</div>
+
+  <p>Your admin panel has a suite of built-in AI tools powered by cutting-edge AI technology. These tools save hours of writing and thinking work. Go to <strong>Admin → AI Tools</strong> to access them.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">✍️</div>
+      <h4>Product Content Generator</h4>
+      <p>Type a product name and the AI writes a full, professional product description. It knows about agriculture and will write in a way that appeals to Nigerian customers. You review and edit, then save to the product.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📰</div>
+      <h4>Blog Post Generator</h4>
+      <p>Give the AI a topic (e.g., "Health benefits of goat milk") and it writes a complete, well-structured blog article. Ready to review and publish in minutes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h4>Sales Insights Analyzer</h4>
+      <p>The AI looks at your recent sales data and writes a summary analysis: which products are doing well, which are lagging, seasonal patterns, and recommendations for what to focus on.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <h4>Business Plan Generator</h4>
+      <p>The AI generates a professional business plan for T-Akomz Agro Estates — useful for investor meetings, bank loan applications, or grant applications.</p>
+    </div>
+  </div>
+
+  <h3 style="color: var(--green); font-size: 16px; margin: 28px 0 10px;">The Public AI Chat Widget</h3>
+  <p>On the public website (what customers see), there is an AI chat assistant floating in the bottom-right corner. Customers can click it and ask questions like "Do you sell organic eggs?", "What is the price of a crate of table eggs?", or "How do I track my order?" The AI knows about your products and answers automatically — 24 hours a day, 7 days a week, without you having to do anything. This reduces the number of calls and messages you have to answer manually.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 10.4</div>
+  <div id="pwa" class="section-title">The Mobile App (PWA)</div>
+
+  <p>Your website is also a <strong>Progressive Web App (PWA)</strong>. This means customers can "install" it on their phone and it works like a native app — appearing on their home screen with your logo and name, without needing to download anything from the App Store or Google Play.</p>
+
+  <p>How a customer installs it:</p>
+  <ol class="steps">
+    <li><div>They visit your website in Chrome on their Android phone (or Safari on iPhone).</div></li>
+    <li><div>Their browser shows a small prompt: "Add T-Akomz Agro Estates to your home screen." They tap it.</div></li>
+    <li><div>Or they tap the browser menu (three dots) and choose "Add to Home Screen."</div></li>
+    <li><div>Your website icon appears on their phone home screen. From now on, tapping it opens the website in full-screen mode, exactly like an app.</div></li>
+  </ol>
+
+  <p>Benefits of the PWA:</p>
+  <ul>
+    <li>Works offline (shows a branded "offline" page if there is no internet)</li>
+    <li>Loads faster because it caches (saves) the website files on the device</li>
+    <li>Feels like a real app — no browser address bar, full-screen experience</li>
+    <li>Zero cost — no App Store fees, no developer approval process</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 10.5</div>
+  <div id="security" class="section-title">Security — How Your Website Is Protected</div>
+
+  <p>Security has been built into every part of your website. Here is what is protecting you and your customers:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Protection</th><th>What It Does</th></tr></thead>
+      <tbody>
+        <tr><td>HTTPS / SSL</td><td>All data between the user's browser and your server is encrypted. No one can read passwords, card details, or personal information in transit. The padlock icon in the browser confirms this.</td></tr>
+        <tr><td>CSRF Protection</td><td>Every form on your website has a hidden security token. This prevents attackers from tricking users into submitting forms without their knowledge (Cross-Site Request Forgery attacks).</td></tr>
+        <tr><td>Role-Based Access</td><td>Every admin page checks your role before showing you anything. Even if someone guesses the URL to an admin page, they are denied access without the right role.</td></tr>
+        <tr><td>Payment Webhook Verification</td><td>When Paystack or Flutterwave notifies your website of a payment, the website verifies the notification is genuinely from Paystack/Flutterwave using a cryptographic signature. Fake payment notifications are rejected.</td></tr>
+        <tr><td>Private File Storage</td><td>Financial receipts, sensitive documents, and uploaded files are stored in a private area that is not accessible via the public internet. Only authenticated users can access them through secure routes.</td></tr>
+        <tr><td>Checkout IDOR Protection</td><td>A customer can only see their own order confirmation page — they cannot view another customer's order by guessing the order number in the URL.</td></tr>
+        <tr><td>Input Validation</td><td>Every form validates data before saving it. Wrong data types, too-short inputs, invalid email formats — all rejected with a helpful error message.</td></tr>
+        <tr><td>Password Hashing</td><td>Passwords are never stored as plain text. They are converted to an unreadable hash. Even if someone stole the database, they could not read any passwords.</td></tr>
+        <tr><td>Address Ownership Check</td><td>A customer can only edit and delete their own saved addresses. They cannot modify another customer's addresses even if they know the ID.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout green">
+    <div class="callout-title">Your Customers' Data Is Safe</div>
+    <p>Your website does not store any card numbers or payment details. All payment information is handled entirely by Paystack or Flutterwave on their own secure servers. Your website only receives confirmation that a payment was successful — not the actual card data. This means even if your website was compromised, no card data could be stolen from it.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 10.6</div>
+  <div class="section-title">Coupon Codes and Discounts</div>
+
+  <p>Your website supports coupon codes — discount codes you can create and share with customers for promotions. Go to <strong>Admin → Coupons</strong> to manage them.</p>
+
+  <p>When creating a coupon, you specify:</p>
+  <ul>
+    <li><strong>The code itself</strong> — e.g., "WELCOME10" or "EASTER20". You choose the code.</li>
+    <li><strong>Discount type</strong> — Either a fixed amount (e.g., ₦500 off) or a percentage (e.g., 15% off the total)</li>
+    <li><strong>Minimum order value</strong> — Optional. E.g., "only works on orders above ₦5,000"</li>
+    <li><strong>Usage limit</strong> — Optional. E.g., "can only be used 50 times total" or "each customer can only use it once"</li>
+    <li><strong>Expiry date</strong> — Optional. The code stops working after this date automatically.</li>
+    <li><strong>Active / Inactive</strong> — You can deactivate a coupon without deleting it.</li>
+  </ul>
+
+  <p>Customers enter the coupon code in the cart page. If the code is valid and all conditions are met, the discount is applied immediately and shown in the order summary.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 10.7</div>
+  <div class="section-title">Dark and Light Theme</div>
+
+  <p>Your public website supports both a <strong>dark mode</strong> (the default — dark background with green accents) and a <strong>light mode</strong> (white background). Customers can switch between them using the toggle button in the navigation bar.</p>
+
+  <p>Their preference is saved automatically. If they switch to light mode and come back tomorrow, the website remembers and shows them light mode again. This is a small but important detail for user comfort — some people prefer bright screens, others prefer dark.</p>
+
+  <p>Your logo is designed to work in both modes. In light mode, a filter is applied to the logo to ensure it remains visible against the white background.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 10.8</div>
+  <div class="section-title">The Newsletter System</div>
+
+  <p>Visitors to your website can subscribe to your newsletter without creating an account. They just type their email address in the newsletter section (usually in the footer or homepage) and click "Subscribe."</p>
+
+  <p>These email addresses are collected in a dedicated newsletter list (separate from customer accounts). You can see the list under Admin → Newsletter.</p>
+
+  <p>When you publish a new product, the system automatically emails all newsletter subscribers to let them know about the new product. This helps drive repeat traffic and sales.</p>
+
+  <p>You can also email all newsletter subscribers directly using the broadcast email tool — useful for sending a monthly newsletter or a special promotion.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 10.9</div>
+  <div class="section-title">Product Reviews</div>
+
+  <p>After a customer receives their order, they can leave a review for each product they purchased. Reviews appear on the product page as star ratings (1–5 stars) with a written comment.</p>
+
+  <p>Reviews are <strong>moderated</strong> — they do not appear publicly immediately. They go to a pending queue where you can read them first. You can approve reviews to make them public or reject ones that are inappropriate.</p>
+
+  <p>Only customers who have actually purchased and received the product can leave a review. This prevents fake reviews from people who have never bought anything.</p>
+
+  <p>Reviews are powerful — research shows most shoppers read reviews before buying. A product with 20 five-star reviews will sell much better than a product with no reviews. Encourage your customers to leave reviews by mentioning it in your delivery confirmation email.</p>
+</div>
+
+<div class="section">
+  <div class="section-num">Section 10.10</div>
+  <div class="section-title">A Note for Your Web Developer</div>
+
+  <p>This section covers the technical commands your developer needs to maintain the website. It is included for completeness but is not expected to be understood by non-technical staff.</p>
+
+  <div class="highlight">
+    <h4>Key Technical Commands</h4>
+    <ul>
+      <li><strong>php artisan serve</strong> — Starts the Laravel development server on your local machine</li>
+      <li><strong>npm run dev</strong> — Starts the Vite build tool for CSS/JavaScript hot reload during development</li>
+      <li><strong>php artisan migrate</strong> — Runs any pending database schema changes</li>
+      <li><strong>php artisan migrate:fresh --seed</strong> — Completely rebuilds the database from scratch (DANGER — wipes all data — development only)</li>
+      <li><strong>php artisan storage:link</strong> — Creates the symbolic link between storage and public folders (needed for uploaded images to appear)</li>
+      <li><strong>php artisan queue:work</strong> — Starts processing background jobs (email sending, notifications). Must be running in production.</li>
+    </ul>
+  </div>
+
+  <p>The website is built on <strong>Laravel 13 (PHP 8.3+)</strong> with <strong>Blade + Alpine.js + Tailwind CSS v3</strong>. The database uses <strong>SQLite in development</strong> and <strong>MySQL in production</strong>. Payments are handled by <strong>Paystack</strong> (primary) and <strong>Flutterwave</strong> (secondary). SMS is via <strong>Termii</strong>. Images are processed by <strong>Intervention Image v4</strong>. PDFs are generated by <strong>barryvdh/laravel-dompdf</strong>.</p>
+</div>
+
+<!-- FINAL CALLOUT -->
+<div class="divider"></div>
+<div class="callout green">
+  <div class="callout-title">You Are Ready</div>
+  <p>This guide has explained every single feature of your T-Akomz Agro Estates website — from the moment a customer lands on your homepage to the moment their salary is paid to your farm workers. Everything is designed to be easy to use, secure, and professional. Your website is a complete business management platform, not just an online shop. If you have any questions about any feature, contact your web developer or refer back to the relevant section of this guide.</p>
+</div>
+
+<div style="text-align: center; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border);">
+  <div style="font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase;">T-Akomz Agro Estates Ltd</div>
+  <div style="font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 8px;">Oke-Ido Road · Ido Ekiti · Ekiti State · Nigeria</div>
+  <div style="font-size: 11px; color: rgba(255,255,255,0.15); margin-top: 6px;">© 2025 — Complete Website Guide</div>
+</div>
+
+  </main>
+</div>
+
+</body>
+</html>
