@@ -23,7 +23,7 @@
         :noindex="$__seoNoindex"
     />
 
-    <link rel="icon" href="{{ asset('images/logo-mark.svg') }}" type="image/svg+xml">
+    <link rel="icon" href="{{ asset('images/icons/pwa-192.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ asset('images/icons/apple-touch-icon.png') }}">
     <meta name="theme-color" content="#B8F397">
     <link rel="manifest" href="{{ asset('manifest.json') }}">

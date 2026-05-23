@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('page-title', 'Dashboard') | T-Akomz Admin</title>
-    <link rel="icon" href="{{ asset('images/logo-mark.svg') }}" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="{{ asset('images/logo-mark.svg') }}">
+    <link rel="icon" href="{{ asset('images/icons/pwa-192.png') }}" type="image/png">
+    <link rel="apple-touch-icon" href="{{ asset('images/icons/apple-touch-icon.png') }}">
     <meta name="theme-color" content="#B8F397">
     <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
