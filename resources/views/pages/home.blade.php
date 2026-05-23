@@ -154,7 +154,7 @@
             <span class="w-1.5 h-1.5 bg-yellow-400 rounded-full"></span> Same-Day Delivery
         </span>
         <span class="glass-card px-3 py-1.5 rounded-full text-xs font-semibold text-content-primary flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span> 200+ Customers
+            <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span> 3,645+ Customers
         </span>
     </div>
 
@@ -225,7 +225,7 @@
             <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-xl bg-orange-400/10 border border-orange-400/20 flex items-center justify-center text-lg flex-shrink-0">🐔</div>
                 <div>
-                    <p class="text-xs font-bold text-content-primary leading-tight">5,000+ Chickens</p>
+                    <p class="text-xs font-bold text-content-primary leading-tight">50,000+ Chickens</p>
                     <p class="text-xs text-content-muted">Farm Raised</p>
                 </div>
             </div>
@@ -247,7 +247,7 @@
             <div class="flex items-center gap-2.5">
                 <span class="text-xl flex-shrink-0">⭐</span>
                 <div>
-                    <p class="text-xs font-bold text-content-primary leading-tight">200+ Customers</p>
+                    <p class="text-xs font-bold text-content-primary leading-tight">3,645+ Customers</p>
                     <p class="text-xs text-content-muted">Across Nigeria</p>
                 </div>
             </div>
@@ -272,10 +272,10 @@
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0">
             @php
                 $farmStats = [
-                    ['icon' => '🐔', 'value' => number_format($stats['about_chickens'] ?? 5000) . '+', 'label' => 'Chickens Raised',  'sub' => 'Free-range'],
+                    ['icon' => '🐔', 'value' => number_format($stats['about_chickens'] ?? 50000) . '+', 'label' => 'Chickens Raised',  'sub' => 'Free-range'],
                     ['icon' => '🥚', 'value' => number_format($stats['about_eggs_daily'] ?? 1000),    'label' => 'Eggs Per Day',      'sub' => 'Hormone-free'],
                     ['icon' => '🌿', 'value' => ($stats['about_acres'] ?? 50) . ' Ac',               'label' => 'Certified Farm',    'sub' => 'Ekiti State'],
-                    ['icon' => '⭐', 'value' => number_format($stats['about_customers'] ?? 3565) . '+','label' => 'Happy Customers',   'sub' => 'Nationwide'],
+                    ['icon' => '⭐', 'value' => number_format($stats['about_customers'] ?? 3645) . '+','label' => 'Happy Customers',   'sub' => 'Nationwide'],
                 ];
             @endphp
             @foreach($farmStats as $i => $stat)
@@ -518,7 +518,7 @@
 
                 {{-- Stats side --}}
                 <div class="grid grid-cols-2 gap-3 flex-shrink-0 w-full sm:w-56">
-                    @foreach([['🌿', number_format($stats['about_acres'] ?? 50), 'Acres'],['👥', number_format($stats['about_customers'] ?? 3565).'+', 'Customers'],['🐔', number_format($stats['about_chickens'] ?? 5000).'+', 'Chickens'],['🥚', number_format($stats['about_eggs_daily'] ?? 1000), 'Eggs/day']] as [$ic,$vl,$lb])
+                    @foreach([['🌿', number_format($stats['about_acres'] ?? 50), 'Acres'],['👥', number_format($stats['about_customers'] ?? 3645).'+', 'Customers'],['🐔', number_format($stats['about_chickens'] ?? 50000).'+', 'Chickens'],['🥚', number_format($stats['about_eggs_daily'] ?? 1000), 'Eggs/day']] as [$ic,$vl,$lb])
                     <div class="rounded-xl p-3 text-center" style="background: rgba(184,243,151,0.05); border: 1px solid rgba(184,243,151,0.1);">
                         <div class="text-xl mb-1">{{ $ic }}</div>
                         <div class="stat-num font-display font-black text-lg leading-none">{{ $vl }}</div>
@@ -543,7 +543,7 @@
                 Customer Stories
             </span>
             <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl text-content-primary mb-3">What Our<br class="sm:hidden"> Customers Say</h2>
-            <p class="text-content-secondary text-base sm:text-lg max-w-md mx-auto">{{ number_format($stats['about_customers'] ?? 3565) }}+ satisfied customers across Nigeria.</p>
+            <p class="text-content-secondary text-base sm:text-lg max-w-md mx-auto">{{ number_format($stats['about_customers'] ?? 3645) }}+ satisfied customers across Nigeria.</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
