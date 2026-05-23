@@ -81,7 +81,7 @@
 
                 {{-- Logo --}}
                 <a href="{{ route('home') }}" class="flex items-center gap-2.5 flex-shrink-0">
-                    <x-logo class="h-10 w-auto" />
+                    <x-logo class="h-16 w-auto" />
                     <div class="leading-tight">
                         <div class="font-display font-bold text-base text-brand-green tracking-wider">T-AKOMZ</div>
                         <div class="text-content-muted text-xs tracking-widest uppercase" style="font-size:9px">Agro Estates</div>
@@ -479,5 +479,7 @@
         });
     }
     </script>
+
+    <x-pwa-install-prompt />
 </body>
 </html>
